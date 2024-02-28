@@ -40,9 +40,13 @@ def get_section_header_map():
 
 
 def get_sections():
-    return [
-        'background', 'academics', 'exchange', 'coop', 'syde', 'life', 'future', 'grad-school', 'job', 'fun'
-    ]
+    return ['background', 'academics', 'exchange', 'coop', 'syde', 'life', 'future', 'grad-school', 'job', 'fun']
+
+
+def get_headers(section=None):
+    if section is None:
+        return [header for headers in get_section_header_map().values() for header in headers]
+    return get_section_header_map()[section]
 
 
 def get_section_headers():
@@ -59,9 +63,14 @@ def load_data() -> pd.DataFrame:
         df = pd.read_csv('datasets/Class Survey (Responses) - Form Responses 1.csv')
     except FileNotFoundError:
         raise FileNotFoundError("Please download the survey data from the Google Drive and place it in the datasets folder.")
-    df.columns = pd.MultiIndex.from_tuples(
-        [(section, header) for section, headers in get_section_headers() for header in headers]
-    )
+    df.columns = pd.MultiIndex.from_tuples([(section, header) for section, headers in get_section_headers() for header in headers])
+    return df
+
+
+def coerce_numeric(df: pd.DataFrame, errors='coerce') -> pd.DataFrame:
+    """Coerce all columns in the DataFrame to numeric. If a value cannot be coerced, it will be replaced with NaN by default."""
+    for column in df.columns:
+        df[column] = pd.to_numeric(df[column], errors=errors)
     return df
 
 
