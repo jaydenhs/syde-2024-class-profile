@@ -48,6 +48,8 @@ def get_sections():
 def get_section_headers():
     header_map = get_section_header_map()
     sections = get_sections()
+    if set(header_map.keys()) != set(sections):
+        raise ValueError("Section header map does not match the sections list.")
     for section in sections:
         yield section, header_map[section]
 
@@ -57,11 +59,9 @@ def load_data() -> pd.DataFrame:
         df = pd.read_csv('datasets/Class Survey (Responses) - Form Responses 1.csv')
     except FileNotFoundError:
         raise FileNotFoundError("Please download the survey data from the Google Drive and place it in the datasets folder.")
-    # Assign column names, with subsections
-    columns = pd.MultiIndex.from_tuples(
+    df.columns = pd.MultiIndex.from_tuples(
         [(section, header) for section, headers in get_section_headers() for header in headers]
     )
-    df.columns = columns
     return df
 
 
