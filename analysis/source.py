@@ -49,6 +49,11 @@ def get_headers(section=None):
     return get_section_header_map()[section]
 
 
+def search_headers(query, options=None):
+    options = options or get_headers()
+    return [header for header in options if query in header]
+
+
 def get_section_headers():
     header_map = get_section_header_map()
     sections = get_sections()

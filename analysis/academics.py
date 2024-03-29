@@ -1,7 +1,8 @@
+import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from source import get_headers, load_data, coerce_numeric
+from source import get_headers, load_data, coerce_numeric, search_headers
 
 
 GRADE_COLUMNS = ['avg-1a', 'avg-1b', 'avg-2a', 'avg-2b', 'avg-3a', 'avg-3b', 'avg-4a']
@@ -40,7 +41,7 @@ def plot_grades(df: pd.DataFrame, box=True, show=True):
 
 
 def plot_ease_vs_use(df: pd.DataFrame, show=True):
-    data = df[ease_columns() + usefulness_columns()]
+    data = df[search_headers('ease') + search_headers('use')]
     # Average the ease and usefulness columns
     data = data.mean(skipna=True).reset_index()
     fig = px.scatter(data, x='ease', y='use', trendline='ols')
@@ -50,11 +51,29 @@ def plot_ease_vs_use(df: pd.DataFrame, show=True):
     return fig
 
 
+def plot_attendance(df: pd.DataFrame, show=True):
+    data = df[search_headers('attendance')]
+    mapping = {
+        '0 - 20%': 0,
+        '20 - 40%': 0.3,
+        '40 - 60%': 0.5,
+        '60 - 80%': 0.7,
+        '80 - 100%': 0.9,
+    }
+    data = data.applymap(lambda x: mapping.get(x, np.nan))
+    fig = px.box(data)
+    fig.update_layout(title='Average Attendance by Term', yaxis=dict(title='Average Attendance'), xaxis=dict(title='Term'))
+    if show:
+        fig.show()
+    return fig
+        
 
-def plot_academics(df: pd.DataFrame, box=True, show=True):
+
+def plot_academics(df: pd.DataFrame, show=True):
     return [
-        # plot_ease_vs_use(df, show),
-        plot_grades(df, box, show),
+        # plot_ease_vs_use(df, show=show),
+        plot_attendance(df, show=show),
+        # plot_grades(df, show=show),
     ]
 
 
