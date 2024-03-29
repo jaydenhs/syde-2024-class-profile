@@ -2,6 +2,7 @@ import React from "react";
 import Background from "../sections/Background";
 import Academics from "../sections/Academics";
 import Coop from "../sections/Coop";
+import { StaticImage } from "gatsby-plugin-image";
 
 import SideNav from "../components/SideNav";
 import "../styles/global.css";
@@ -18,8 +19,14 @@ const sections = [
 export default function Index() {
   return (
     <div>
-      <section className="h-96 pl-64 pr-12 py-24 bg-white">
-        <h2 className="text-6xl font-bold mb-8">Hero</h2>
+      <section className="h-screen pl-24 pr-24 bg-white">
+        <h1 className="mb-8">SYDE '24 CLASS PROFILE</h1>
+        <StaticImage
+          className="blob h-96 object-contain"
+          imgClassName="opacity-5"
+          objectFit="contain"
+          src="../images/1A.jpeg"
+        />
       </section>
 
       <Background />
