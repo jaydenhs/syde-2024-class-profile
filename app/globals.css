@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-family: var(--font-work-sans);
+  scroll-behavior: smooth !important;
+}
+
+h1,
+h2 {
+  font-family: var(--font-anton);
+  line-height: 112.5%;
+}
+
+h1 {
+  font-size: 7.5rem;
+}
+h2 {
+  font-size: 6rem;
+}
+h3 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
