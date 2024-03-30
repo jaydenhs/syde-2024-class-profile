@@ -11,7 +11,7 @@ export default function Academics() {
       <h2 className="col-span-7">ACADEMICS</h2>
       <Graph
         title="Title"
-        src="/salary.html"
+        src="/grades.html"
         className={"col-span-7"}
       >
         See the sample Plotly embedded plot below!
