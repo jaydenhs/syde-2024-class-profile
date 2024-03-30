@@ -71,25 +71,30 @@ const SpotifyEmbed = ({ title, playlistId }) => {
     return array;
   };
 
+  const handleLoadMoreTracks = () => {
+    if (tracksStart + shownTracks * 2 >= playlistData.length) {
+      // Reset to zero when reaching the end
+      setTracksStart(0);
+    } else {
+      // Increment by shownTracks
+      setTracksStart((prevTracksStart) => prevTracksStart + shownTracks);
+    }
+  };
+
   return (
     <div>
       <div className="playlist-container space-y-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <h3>{title}</h3>
-            {playlistData &&
-              tracksStart + shownTracks * 2 < playlistData.length && (
-                <button
-                  onClick={() =>
-                    setTracksStart(
-                      (prevTracksStart) => prevTracksStart + shownTracks
-                    )
-                  }
-                  className="hover:rotate-45 rotate transition-transform"
-                >
-                  <Image src={SyncIcon} />
-                </button>
-              )}
+            {playlistData && (
+              <button
+                onClick={handleLoadMoreTracks}
+                className="hover:rotate-45 rotate transition-transform"
+              >
+                <Image src={SyncIcon} />
+              </button>
+            )}
           </div>
 
           <a
