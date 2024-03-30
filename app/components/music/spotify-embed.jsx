@@ -102,7 +102,7 @@ const SpotifyEmbed = ({ title, playlistId }) => {
           </a>
         </div>
         {playlistData && (
-          <div className="flex items-start space-x-6">
+          <div className="grid grid-cols-3 gap-x-6">
             {playlistData
               .slice(tracksStart, tracksStart + shownTracks)
               .map((item, index) => {

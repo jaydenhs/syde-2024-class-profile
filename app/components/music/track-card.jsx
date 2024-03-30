@@ -33,20 +33,20 @@ const TrackCard = ({ track }) => {
 
   return (
     <div
-      className="group transition-all space-y-1 hover:scale-110"
+      className="group transition-all space-y-2 hover:scale-110"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {albumArt && (
         <img
           src={albumArt}
-          className="rounded-lg h-full object-cover saturate-50 hover:saturate-100"
+          className="rounded-lg object-cover saturate-50 hover:saturate-100"
           alt={`Album Art for ${albumName}`}
         />
       )}
-      <div className="text-xs space-y-0.5">
-        <p className="font-medium">{track.name}</p>
-        <p className="artist">
+      <div className="text-sm space-y-0">
+        <p className="font-medium truncate">{track.name}</p>
+        <p className="artist truncate">
           {track.artists.map((artist) => artist.name).join(", ")}
         </p>
       </div>
