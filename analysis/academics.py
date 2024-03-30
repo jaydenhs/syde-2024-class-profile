@@ -66,15 +66,15 @@ def plot_attendance(df: pd.DataFrame, show=True):
     if show:
         fig.show()
     return fig
-        
+
 
 
 def plot_academics(df: pd.DataFrame, show=True):
-    return [
-        # plot_ease_vs_use(df, show=show),
-        plot_attendance(df, show=show),
-        # plot_grades(df, show=show),
-    ]
+    return {
+        'ease_vs_use': plot_ease_vs_use(df, show=show),
+        'attendance': plot_attendance(df, show=show),
+        'grades': plot_grades(df, show=show),
+    }
 
 
 if __name__ == "__main__":

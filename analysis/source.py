@@ -34,7 +34,7 @@ def get_section_header_map():
         'life': ['design-teams', 'sports', 'clubs', 'reps', 'volunteering', 'fav-restaurant', 'political-party', 'religions', 'belief-god'],
         'future': ['debt', 'savings',  'percent-financed', 'stay-in-touch', 'grad-trip', 'marrying', 'kids', 'peng', 'post-grad-plan'],
         'grad-school': ['schools-applied', 'depts-applied', 'school-accepted', 'dept-accepted'],
-        'job': ['loc', 'ret-to-canada', 'work-remote', 'prev-coop', 'title', 'pay', 'ret-to-school'],
+        'job': ['loc-ft', 'ret-to-canada', 'work-remote', 'prev-coop', 'title-ft', 'pay-ft', 'ret-to-school'],
         'fun': ['myers-briggs', 'photos', 'top-song', 'loo-reminder-song', 'party-song', 'gym-song', 'cry-song'],
     }
 
@@ -49,8 +49,8 @@ def get_headers(section=None):
     return get_section_header_map()[section]
 
 
-def search_headers(query, options=None):
-    options = options or get_headers()
+def search_headers(query, options=None, section=None):
+    options = options or get_headers(section)
     return [header for header in options if query in header]
 
 
@@ -74,9 +74,10 @@ def load_data() -> pd.DataFrame:
 
 def coerce_numeric(df: pd.DataFrame, errors='coerce') -> pd.DataFrame:
     """Coerce all columns in the DataFrame to numeric. If a value cannot be coerced, it will be replaced with NaN by default."""
-    for column in df.columns:
-        df[column] = pd.to_numeric(df[column], errors=errors)
-    return df
+    data = df.copy()
+    for column in data.columns:
+        data[column] = pd.to_numeric(data[column], errors=errors)
+    return data
 
 
 if __name__ == "__main__":
