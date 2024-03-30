@@ -23,3 +23,11 @@ h3 {
   font-size: 1.5rem;
   font-weight: 500;
 }
+
+.section-layout > * {
+  @apply col-span-7;
+}
+
+.section-layout > .right {
+  @apply col-start-9 col-span-4;
+}
