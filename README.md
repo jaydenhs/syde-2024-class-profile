@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+## To-do's
+
+- [ ] Hero
+  - [ ] add ticker scroller underneath title w sections
+- [ ] Music
+  - [ ] show when browser hasn't been interact w yet
+  - [ ] provide global option to mute sound
