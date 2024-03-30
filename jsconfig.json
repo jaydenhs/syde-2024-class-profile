@@ -4,7 +4,8 @@
       "@/*": ["./"],
       "@sections/*": ["./app/sections/*"],
       "@components/*": ["./app/components/*"],
-      "@images/*": ["./public/images/*"]
+      "@images/*": ["./public/images/*"],
+      "@icons/*": ["./public/icons/*"]
     }
   }
 }

@@ -3,9 +3,15 @@
 import React, { useState, useEffect } from "react";
 import TrackCard from "./track-card";
 import axios from "axios";
+import Image from "next/image";
+
+import SyncIcon from "@icons/sync.svg";
 
 const SpotifyEmbed = ({ title, playlistId }) => {
   const [playlistData, setPlaylistData] = useState(null);
+  const [tracksStart, setTracksStart] = useState(0);
+
+  const shownTracks = 3;
 
   useEffect(() => {
     const clientId = "3b688e6717e64da4a591c11875fdcbc0";
@@ -47,8 +53,7 @@ const SpotifyEmbed = ({ title, playlistId }) => {
             (item) => item.track.preview_url !== null
           )
         );
-        const slicedTracks = shuffledTracks.slice(0, 4);
-        setPlaylistData(slicedTracks);
+        setPlaylistData(shuffledTracks);
       } catch (error) {
         console.error("Error:", error);
       }
@@ -70,7 +75,23 @@ const SpotifyEmbed = ({ title, playlistId }) => {
     <div>
       <div className="playlist-container space-y-4">
         <div className="flex items-center justify-between">
-          <h3>{title}</h3>
+          <div className="flex items-center space-x-2">
+            <h3>{title}</h3>
+            {playlistData &&
+              tracksStart + shownTracks * 2 < playlistData.length && (
+                <button
+                  onClick={() =>
+                    setTracksStart(
+                      (prevTracksStart) => prevTracksStart + shownTracks
+                    )
+                  }
+                  className="hover:rotate-45 rotate transition-transform"
+                >
+                  <Image src={SyncIcon} />
+                </button>
+              )}
+          </div>
+
           <a
             className="underline"
             href={`https://open.spotify.com/playlist/${playlistId}`}
@@ -81,12 +102,14 @@ const SpotifyEmbed = ({ title, playlistId }) => {
           </a>
         </div>
         {playlistData && (
-          <div className="flex items-start space-x-4">
-            {playlistData.slice(0, 5).map((item, index) => {
-              console.log(index, item.track.name);
+          <div className="flex items-start space-x-6">
+            {playlistData
+              .slice(tracksStart, tracksStart + shownTracks)
+              .map((item, index) => {
+                console.log(index, item.track.name);
 
-              return <TrackCard key={index} track={item.track} />;
-            })}
+                return <TrackCard key={index} track={item.track} />;
+              })}
           </div>
         )}
       </div>
