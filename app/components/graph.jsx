@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Graph({
-  title = "Primary takeaway",
+  title,
   src,
   children = React.createElement("p", null, "Secondary takeaways"),
   className,
@@ -9,7 +9,7 @@ export default function Graph({
   return (
     <div className={`space-y-4 ${className}`}>
       <div>
-        <h3>{title}</h3>
+        <h3>{title ? title : src}</h3>
         {children}
       </div>
       <iframe

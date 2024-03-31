@@ -42,6 +42,4 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] Hero
   - [ ] add ticker scroller underneath title w sections
 - [ ] Music
-  - [ ] play on click, not on hover
-  - [ ] show when browser hasn't been interact w yet
-  - [ ] provide global option to mute sound
+  - [ ] add placeholder for album art to prevent layout shift

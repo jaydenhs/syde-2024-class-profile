@@ -90,9 +90,12 @@ const SpotifyEmbed = ({ title, playlistId }) => {
             {playlistData && (
               <button
                 onClick={handleLoadMoreTracks}
-                className="hover:rotate-45 rotate transition-transform"
+                className="bg-white border border-gray-300 rounded-lg p-0.5 group"
               >
-                <Image src={SyncIcon} />
+                <Image
+                  src={SyncIcon}
+                  className="group-hover:rotate-45 rotate transition-transform"
+                />
               </button>
             )}
           </div>
@@ -111,8 +114,6 @@ const SpotifyEmbed = ({ title, playlistId }) => {
             {playlistData
               .slice(tracksStart, tracksStart + shownTracks)
               .map((item, index) => {
-                console.log(index, item.track.name);
-
                 return <TrackCard key={index} track={item.track} />;
               })}
           </div>
