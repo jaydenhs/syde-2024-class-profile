@@ -23,25 +23,29 @@ def style_figure(fig: go.Figure):
     return fig
 
 
-def generate_plots(save_dir: str, replace=False):
+def generate_plots(save_dir=None, replace=False, show=False):
     df = load_data()
     figs = {
-        # 'friends_vs_grades': academics.friends_vs_grades(df, show=False),
-        'ease_vs_use': academics.ease_vs_use(df, show=False),
-        'attendance': academics.attendance(df, show=False),
-        'grades': academics.grades(df, show=False),
-        'salary': coop.salary(df, show=False),
+        # 'friends_vs_grades': academics.friends_vs_grades(df, show=show),
+        'ease_vs_use': academics.ease_vs_use(df, show=show),
+        'attendance': academics.attendance(df, show=show),
+        'grades': academics.grades(df, show=show),
+        'attendance_vs_grades': academics.attendance_vs_grades(df, show=show),
+        'salary': coop.salary(df, show=show),
+        # 'salary_vs_grades': coop.grades_vs_salary(df, show=show),
     }
 
-    print(f"Saving {len(figs)} plots to {save_dir}")
-    for name, fig in figs.items():
-        filepath = os.path.join(save_dir, f'{name}.html')
-        if os.path.exists(filepath) and not replace:
-            print(f"Skipping {name} as it already exists.")
-            continue
-        fig = style_figure(fig)
-        fig.write_html(filepath, config={'displayModeBar': False, 'displaylogo': False})
+    if save_dir is not None:
+        print(f"Saving {len(figs)} plots to {save_dir}")
+        for name, fig in figs.items():
+            filepath = os.path.join(save_dir, f'{name}.html')
+            if os.path.exists(filepath) and not replace:
+                print(f"Skipping {name} as it already exists.")
+                continue
+            fig = style_figure(fig)
+            fig.write_html(filepath, config={'displayModeBar': False, 'displaylogo': False})
 
 
 if __name__ == "__main__":
-    generate_plots('public/', replace=True)
+    # generate_plots('public/', replace=True)
+    generate_plots(show=True)

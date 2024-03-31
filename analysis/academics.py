@@ -31,7 +31,7 @@ PERCENT_MAP = {
 
 
 def grades(df: pd.DataFrame, box=True, show=True):
-    data = coerce_numeric(df[search_headers('academics', 'avg')]['academics'])
+    data = coerce_numeric(df['academics'][search_headers('avg')])
     fig = px.box(data) if box else px.line(data.mean(), error_y=data.sem(), markers=True)
     fig.update_layout(title='Average Grades by Term', yaxis=dict(title='Average Grade'), xaxis=dict(title='Term'))
     if show:
@@ -40,8 +40,8 @@ def grades(df: pd.DataFrame, box=True, show=True):
 
 
 def ease_vs_use(df: pd.DataFrame, show=True):
-    ease = df[search_headers('academics', 'ease-')]['academics']
-    use = df[search_headers('academics', 'use-')]['academics']
+    ease = df['academics'][search_headers('ease-')]
+    use = df['academics'][search_headers('use-')]
     ease = ease.replace(EASE_SCALE)
     use = use.replace(USEFULNESS_SCALE)
     # Average the ease and usefulness columns
@@ -53,19 +53,19 @@ def ease_vs_use(df: pd.DataFrame, show=True):
     # Combine the two series into a DataFrame
     data = pd.concat([ease, use], keys=['ease', 'use'], axis=1)
     fig = px.scatter(data, x='ease', y='use', text=data.index, size_max=60)
-    fig.update_layout(title='Ease of Use vs. Usefulness', xaxis=dict(title='Ease of Use'), yaxis=dict(title='Usefulness'))
+    fig.update_layout(title='Ease of Use vs. Usefulness', xaxis_title='Ease of Use', yaxis_title='Usefulness')
     if show:
         fig.show()
     return fig
 
 
 def attendance(df: pd.DataFrame, show=True):
-    data = df[search_headers('academics', 'attendance')]['academics']
+    data = df['academics'][search_headers('attendance')]
     data = data.applymap(lambda x: PERCENT_MAP.get(x, np.nan))
     fig = px.line(data.mean(), error_y=data.sem(), markers=True)
     fig.update_layout(
         title='Average Attendance by Term',
-        xaxis=dict(title='Term'),
+        xaxis_title='Term',
         yaxis=dict(title='Average Attendance', range=[0, 1]),
     )
     if show:
@@ -80,7 +80,35 @@ def friends_vs_grades(df: pd.DataFrame, show=True):
     friends.replace({'5+': 5}, inplace=True)
     friends = pd.to_numeric(friends, errors='coerce')
     fig = px.scatter(x=friends, y=grades, size_max=60)
-    fig.update_layout(title='Average Grades vs. Close Friends', xaxis=dict(title='Close Friends'), yaxis=dict(title='Average Grade'))
+    fig.update_layout(title='Average Grades vs. Close Friends', xaxis_title='Close Friends', yaxis_title='Average Grade')
+    if show:
+        fig.show()
+    return fig
+
+
+def attendances_vs_grades(df: pd.DataFrame, box=True, show=True):
+    attendance = df['academics'][search_headers('attendance')]
+    attendance = attendance.rename(lambda x: x.split('-')[-1], axis=1)
+    attendance = attendance.melt(var_name='term', value_name='attendance')
+    grades = coerce_numeric(df['academics'][search_headers('avg')])
+    grades = grades.rename(lambda x: x.split('-')[-1], axis=1)
+    grades = grades.melt(var_name='term', value_name='grade')
+    data = pd.merge(attendance, grades, on='term')
+    data.drop('term', axis=1, inplace=True)
+    if box:
+        fig = px.box(data, x='attendance', y='grade')
+    else:
+        data = data.groupby('attendance')
+        data = pd.concat([data.mean(), data.sem()], axis=1)
+        data.columns = ['mean', 'std']
+        fig = px.line(data, error_y='std', markers=True)
+    fig.update_layout(
+        title='Average Grades vs. Attendance',
+        xaxis_title='Attendance',
+        yaxis_title='Average Grade',
+        # Sort the data by attendance
+        xaxis_categoryorder='category ascending',
+    )
     if show:
         fig.show()
     return fig
@@ -88,4 +116,4 @@ def friends_vs_grades(df: pd.DataFrame, show=True):
 
 if __name__ == "__main__":
     df = load_data()
-    friends_vs_grades(df)
+    attendances_vs_grades(df)
