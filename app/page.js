@@ -5,6 +5,7 @@ import Nav from "@components/nav";
 import Hero from "@sections/0-hero";
 import Background from "@sections/1-background";
 import Academics from "@sections/2-academics";
+import Coop from "@sections/3-co-op";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <Hero />
       <Background />
       <Academics />
+      <Coop />
       <Nav />
     </main>
   );
