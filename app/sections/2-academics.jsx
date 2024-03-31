@@ -9,13 +9,7 @@ export default function Academics() {
       id="Academics"
     >
       <h2 className="col-span-7">ACADEMICS</h2>
-      <Graph
-        title="Title"
-        src="/grades.html"
-        className={"col-span-7"}
-      >
-        See the sample Plotly embedded plot below!
-      </Graph>
+      <Graph src="/grades.html" className={"col-span-7"}></Graph>
     </Section>
   );
 }
