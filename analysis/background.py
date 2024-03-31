@@ -1,8 +1,7 @@
-import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from source import load_data, coerce_numeric, search_headers
+from source import load_data
 
 
 def pie_plot(df: pd.DataFrame, key: str, parse_multi_answer=True, normalize=True, show=True):
@@ -13,24 +12,25 @@ def pie_plot(df: pd.DataFrame, key: str, parse_multi_answer=True, normalize=True
     data = data.value_counts(normalize=normalize)
     if normalize:
         data *= 100
-    fig = px.pie(names=data.index, values=data.values)
-    fig.update_layout(title=f'{key.capitalize()} Distribution')
+    fig = px.pie(names=data.index, values=data.values, color_discrete_sequence=px.colors.qualitative.Set1)
+    fig.update_layout(title=f'{key.capitalize()} Distribution', showlegend=False)
+    fig.update_traces(textinfo='percent+label')
     if show:
         fig.show()
     return fig
 
 
-def ethnicity(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'ethnicity', show=show)
+def ethnicity(df: pd.DataFrame, **kwargs):
+    return pie_plot(df, 'ethnicity', **kwargs)
 
-def gender(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'gender', show=show)
+def gender(df: pd.DataFrame, **kwargs):
+    return pie_plot(df, 'gender', **kwargs)
 
-def sexual_orientation(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'sexual-orientation', show=show)
+def sexual_orientation(df: pd.DataFrame, **kwargs):
+    return pie_plot(df, 'sexual-orientation', **kwargs)
 
-def parent_education(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'parent-degree', show=show)
+def parent_education(df: pd.DataFrame, **kwargs):
+    return pie_plot(df, 'parent-degree', **kwargs)
 
 def parent_income(df: pd.DataFrame, show=True):
     data = df['background', 'parent-income'].dropna().value_counts(normalize=True) * 100
@@ -43,10 +43,10 @@ def parent_income(df: pd.DataFrame, show=True):
     return fig
 
 
-def international(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'is-international', show=show)
+def international(df: pd.DataFrame, **kwargs):
+    return pie_plot(df, 'is-international', **kwargs)
 
 
 if __name__ == "__main__":
     df = load_data()
-    parent_income(df)
+    parent_education(df)
