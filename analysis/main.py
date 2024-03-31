@@ -2,8 +2,8 @@ import os
 
 from plotly import graph_objects as go
 from source import load_data
-from academics import plot_academics
-from coop import plot_coop
+import academics
+import coop
 
 
 
@@ -25,9 +25,13 @@ def style_figure(fig: go.Figure):
 
 def generate_plots(save_dir: str, replace=False):
     df = load_data()
-    figs = {}
-    figs.update(plot_academics(df['academics'], show=False))
-    figs.update(plot_coop(df['coop'], show=False))
+    figs = {
+        # 'friends_vs_grades': academics.friends_vs_grades(df, show=False),
+        'ease_vs_use': academics.ease_vs_use(df, show=False),
+        'attendance': academics.attendance(df, show=False),
+        'grades': academics.grades(df, show=False),
+        'salary': coop.salary(df, show=False),
+    }
 
     print(f"Saving {len(figs)} plots to {save_dir}")
     for name, fig in figs.items():
