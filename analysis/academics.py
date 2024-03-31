@@ -106,7 +106,6 @@ def attendances_vs_grades(df: pd.DataFrame, box=True, show=True):
         title='Average Grades vs. Attendance',
         xaxis_title='Attendance',
         yaxis_title='Average Grade',
-        # Sort the data by attendance
         xaxis_categoryorder='category ascending',
     )
     if show:

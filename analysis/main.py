@@ -1,9 +1,10 @@
 import os
-
 from plotly import graph_objects as go
+
 from source import load_data
 import academics
 import coop
+import background
 
 
 
@@ -26,11 +27,16 @@ def style_figure(fig: go.Figure):
 def generate_plots(save_dir=None, replace=False, show=False):
     df = load_data()
     figs = {
-        # 'friends_vs_grades': academics.friends_vs_grades(df, show=show),
+        'ethnicity': background.ethnicity(df, show=show),
+        'gender': background.gender(df, show=show),
+        'parent_education': background.parent_education(df, show=show),
+        'sexual_orientation': background.sexual_orientation(df, show=show),
+        # 'international': background.international(df, show=show),
         'ease_vs_use': academics.ease_vs_use(df, show=show),
         'attendance': academics.attendance(df, show=show),
         'grades': academics.grades(df, show=show),
         'attendance_vs_grades': academics.attendance_vs_grades(df, show=show),
+        # 'friends_vs_grades': academics.friends_vs_grades(df, show=show),
         'salary': coop.salary(df, show=show),
         # 'salary_vs_grades': coop.grades_vs_salary(df, show=show),
     }
