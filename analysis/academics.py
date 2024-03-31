@@ -86,7 +86,7 @@ def friends_vs_grades(df: pd.DataFrame, show=True):
     return fig
 
 
-def attendances_vs_grades(df: pd.DataFrame, box=True, show=True):
+def attendance_vs_grades(df: pd.DataFrame, box=True, show=True):
     attendance = df['academics'][search_headers('attendance')]
     attendance = attendance.rename(lambda x: x.split('-')[-1], axis=1)
     attendance = attendance.melt(var_name='term', value_name='attendance')

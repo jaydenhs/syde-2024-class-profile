@@ -26,32 +26,41 @@ def style_figure(fig: go.Figure):
 
 def generate_plots(save_dir=None, replace=False, show=False):
     df = load_data()
-    figs = {
-        'ethnicity': background.ethnicity(df, show=show),
-        'gender': background.gender(df, show=show),
-        'parent_education': background.parent_education(df, show=show),
-        'sexual_orientation': background.sexual_orientation(df, show=show),
-        # 'international': background.international(df, show=show),
-        'ease_vs_use': academics.ease_vs_use(df, show=show),
-        'attendance': academics.attendance(df, show=show),
-        'grades': academics.grades(df, show=show),
-        'attendance_vs_grades': academics.attendance_vs_grades(df, show=show),
-        # 'friends_vs_grades': academics.friends_vs_grades(df, show=show),
-        'salary': coop.salary(df, show=show),
-        # 'salary_vs_grades': coop.grades_vs_salary(df, show=show),
+    fig_dirs = {
+        '1-background': {
+            'ethnicity': background.ethnicity(df, show=show),
+            'gender': background.gender(df, show=show),
+            'parent_education': background.parent_education(df, show=show),
+            'sexual_orientation': background.sexual_orientation(df, show=show),
+            # 'international': background.international(df, show=show),
+        },
+        '2-academics': {
+            'ease_vs_use': academics.ease_vs_use(df, show=show),
+            'attendance': academics.attendance(df, show=show),
+            'grades': academics.grades(df, show=show),
+            'attendance_vs_grades': academics.attendance_vs_grades(df, show=show),
+            # 'friends_vs_grades': academics.friends_vs_grades(df, show=show),
+        },
+        '3-coop': {
+            'salary': coop.salary(df, show=show),
+            # 'salary_vs_grades': coop.grades_vs_salary(df, show=show),
+        }
     }
 
     if save_dir is not None:
-        print(f"Saving {len(figs)} plots to {save_dir}")
-        for name, fig in figs.items():
-            filepath = os.path.join(save_dir, f'{name}.html')
-            if os.path.exists(filepath) and not replace:
-                print(f"Skipping {name} as it already exists.")
-                continue
-            fig = style_figure(fig)
-            fig.write_html(filepath, config={'displayModeBar': False, 'displaylogo': False})
+        for subdir, figs in fig_dirs.items():
+            directory = os.path.join(save_dir, subdir)
+            os.makedirs(directory, exist_ok=True)
+            print(f"Saving {len(figs)} plots to {directory}")
+            for name, fig in figs.items():
+                filepath = os.path.join(directory, f'{name}.html')
+                if os.path.exists(filepath) and not replace:
+                    print(f"Skipping {name} as it already exists.")
+                    continue
+                fig = style_figure(fig)
+                fig.write_html(filepath, config={'displayModeBar': False, 'displaylogo': False})
 
 
 if __name__ == "__main__":
-    # generate_plots('public/', replace=True)
-    generate_plots(show=True)
+    generate_plots('public/graphs/', replace=True)
+    # generate_plots(show=True)
