@@ -1,7 +1,9 @@
 import React from "react";
+
 import Section from "@components/section";
 import Graph from "@components/graph";
 import ImageBlob from "@components/image-blob";
+import SpotifyEmbed from "@components/music/spotify-embed";
 
 import Pic1 from "@images/2-academics/IMG_1994.png";
 import Pic2 from "@images/2-academics/IMG_3855.jpg";
@@ -25,6 +27,10 @@ export default function Academics() {
       </div>
       <Graph src="/graphs/2-academics/ease_vs_use.html"></Graph>
       <Graph src="/graphs/2-academics/attendance.html"></Graph>
+      <SpotifyEmbed
+        title="Songs that remind us of Waterloo"
+        playlistId={"3bHSJ5LYdASACOlzO9bc2l"}
+      />
     </Section>
   );
 }
