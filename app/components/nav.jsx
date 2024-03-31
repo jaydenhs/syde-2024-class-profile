@@ -5,6 +5,10 @@ const sections = [
   { id: 0, text: "Home" },
   { id: 1, text: "Background" },
   { id: 2, text: "Academics" },
+  { id: 3, text: "Co-op" },
+  { id: 4, text: "SYDE" },
+  { id: 5, text: "Lifestyle" },
+  { id: 6, text: "Future" },
 ];
 
 export default function Nav() {
