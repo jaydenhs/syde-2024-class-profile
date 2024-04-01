@@ -54,7 +54,10 @@ const TrackCard = ({ track }) => {
         style={{ cursor: "pointer" }}
       >
         {albumArt && (
-          <img
+          <Image
+            width={640}
+            height={640}
+            placeholder="empty"
             src={albumArt}
             className="rounded-lg object-cover saturate-50 group-hover:saturate-100"
             alt={`Album Art for ${albumName}`}

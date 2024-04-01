@@ -15,7 +15,11 @@ export default function Nav() {
   return (
     <div className="fixed left-0 top-1/2 -translate-y-1/2 group/nav rounded-r-lg ml-4 hover:bg-white hover:ml-0 hover:p-4">
       {sections.map((section) => (
-        <Link href={`#${section.text}`} className="block h-8" key={section.id}>
+        <Link
+          href={`#${section.text}`}
+          className="block no-underline h-8"
+          key={section.id}
+        >
           <div className="group flex h-full items-center space-x-2">
             <div
               className={`w-6 group-hover:w-12 h-1/4 rounded-xl ${section.color} transition-all duration-200`}

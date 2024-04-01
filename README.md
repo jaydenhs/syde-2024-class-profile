@@ -38,6 +38,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## To-do's
 
 - [ ] Hero
-  - [ ] add ticker scroller underneath title w sections
+  - [ ] add fancy border to About link
+  - [ ] add fun transition to swap between class photos
 - [ ] Music
   - [ ] add placeholder for album art to prevent layout shift

@@ -55,17 +55,18 @@ export default function About() {
         <h3>Analyst&#39;s Note</h3>
         <p>
           All questions in the questionnaire were optional. The profile may not
-          extend beyond this cohort's experiences and may not be applicable to
-          other SYDE cohorts or university students. This profile was conducted
-          by students independent of the University of Waterloo.
+          extend beyond this cohort&#39;s experiences and may not be applicable
+          to other SYDE cohorts or university students. This profile was
+          conducted by students independent of the University of Waterloo.
         </p>
         <p>
-          Academic terms are denoted as "1A", 1B, … "4B", while co-op terms are
-          "Co-op 1", … "Co-op 6", each lasting 4 months. The SYDE co-op sequence
-          follows a "Stream 4" pattern, with study and co-op terms alternating
-          after 1A. Students then complete their final two academic terms, 4A
-          and 4B, back to back. Monetary values are expressed in Canadian
-          dollars, converted at a rate of 1 USD = 1.36 CAD.
+          Academic terms are denoted as &#39;1A&#39;, 1B, … &#39;4B&#39;, while
+          co-op terms are &#39;Co-op 1&#39;, … &#39;Co-op 6&#39;, each lasting 4
+          months. The SYDE co-op sequence follows a &#39;Stream 4&#39; pattern,
+          with study and co-op terms alternating after 1A. Students then
+          complete their final two academic terms, 4A and 4B, back to back.
+          Monetary values are expressed in Canadian dollars, converted at a rate
+          of 1 USD = 1.36 CAD.
         </p>
       </div>
     </Section>
