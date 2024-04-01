@@ -23,6 +23,9 @@ h3 {
   font-size: 1.5rem;
   font-weight: 500;
 }
+h4 {
+  font-weight: 500;
+}
 
 a {
   @apply underline;
