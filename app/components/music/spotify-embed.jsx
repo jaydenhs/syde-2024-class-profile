@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import TrackCard from "./track-card";
 import axios from "axios";
 import Image from "next/image";
+import Link from "next/link";
 
 import SyncIcon from "@icons/sync.svg";
 
@@ -100,14 +101,12 @@ const SpotifyEmbed = ({ title, children, playlistId }) => {
               )}
             </div>
 
-            <a
-              className="underline"
+            <Link
               href={`https://open.spotify.com/playlist/${playlistId}`}
               target="_blank"
-              rel="noopener noreferrer"
             >
               View the full playlist
-            </a>
+            </Link>
           </div>
           {/* Insights generated with: http://organizeyourmusic.playlistmachinery.com/# */}
           <div>{children}</div>

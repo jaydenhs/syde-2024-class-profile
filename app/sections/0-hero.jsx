@@ -1,4 +1,7 @@
 import React from "react";
+
+import Link from "next/link";
+
 import ImageBlob from "@components/image-blob";
 import Section from "@components/section";
 import classPic1 from "@images/0-hero/4A.jpg";
@@ -31,7 +34,15 @@ export default function Hero() {
           {renderTickerDivs()}
         </div>
       </div>
-      <ImageBlob src={classPic1} className={"flex-1 object-cover"} />
+      <div className="relative">
+        <ImageBlob src={classPic1} className={"flex-1 object-cover"} />
+        <Link
+          href="/about"
+          className="absolute right-0 bottom-0 flex flex-row items-center w-48 h-48 p-0 text-center no-underline rounded-full bg-purple-100 border-purple-400 border-4 hover:bg-purple-200  hover:border-8 transition-all"
+        >
+          <h3 className="mx-auto">About this project</h3>
+        </Link>
+      </div>
       {/* <ImageBlob src={classPic2} className={"flex-1 object-cover"} /> */}
     </Section>
   );

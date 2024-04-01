@@ -24,6 +24,10 @@ h3 {
   font-weight: 500;
 }
 
+a {
+  @apply underline;
+}
+
 .section-layout {
   @apply grid grid-cols-12 space-y-12;
 }

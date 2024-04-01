@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Anton, Work_Sans } from "next/font/google";
 import "./globals.css";
 
@@ -27,9 +26,9 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`scroll-smooth ${anton.variable} ${work_sans.variable}`}
+      className={`scroll-smooth h-full ${anton.variable} ${work_sans.variable}`}
     >
-      <body>{children}</body>
+      <body className="relative h-full">{children}</body>
     </html>
   );
 }
