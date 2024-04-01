@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import HelpIcon from "@icons/help.svg";
 
 const sections = [
   { id: 0, text: "Home", color: "bg-gray-500" },
@@ -13,7 +15,7 @@ const sections = [
 
 export default function Nav() {
   return (
-    <div className="fixed left-0 top-1/2 -translate-y-1/2 group/nav rounded-r-lg ml-4 hover:bg-white hover:ml-0 hover:p-4">
+    <div className="fixed left-0 top-1/2 -translate-y-1/2 group/nav rounded-r-lg ml-4 border-gray-200 hover:bg-white hover:border-2 hover:border-l-0 hover:ml-0 hover:p-4">
       {sections.map((section) => (
         <Link
           href={`#${section.text}`}
@@ -28,6 +30,17 @@ export default function Nav() {
           </div>
         </Link>
       ))}
+      <Link
+        href="/about"
+        target="_blank"
+        className="group no-underline mt-4 flex space-x-2"
+      >
+        <Image
+          className="group-hover:scale-110 transition-transform"
+          src={HelpIcon}
+        />
+        <p className="hidden group-hover/nav:inline">About</p>
+      </Link>
     </div>
   );
 }
