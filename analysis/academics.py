@@ -44,16 +44,25 @@ def ease_vs_use(df: pd.DataFrame, show=True):
     use = df['academics'][search_headers('use-')]
     ease = ease.replace(EASE_SCALE)
     use = use.replace(USEFULNESS_SCALE)
+    # Center individual answers
+    ease = ease.subtract(ease.mean(axis=1), axis=0)
+    use = use.subtract(use.mean(axis=1), axis=0)
     # Average the ease and usefulness columns
-    ease = ease.mean(skipna=True)
-    use = use.mean(skipna=True)
+    ease = ease.mean(axis=0)
+    use = use.mean(axis=0)
     # Rename column from ease-syde101 to syde101
     ease = ease.rename(lambda x: x.split('-')[-1], axis=0)
     use = use.rename(lambda x: x.split('-')[-1], axis=0)
     # Combine the two series into a DataFrame
     data = pd.concat([ease, use], keys=['ease', 'use'], axis=1)
+    # Scale values to -1 to 1
+    data /= data.abs().max()
     fig = px.scatter(data, x='ease', y='use', text=data.index, size_max=60)
-    fig.update_layout(title='Ease of Use vs. Usefulness', xaxis_title='Ease of Use', yaxis_title='Usefulness')
+    fig.update_layout(
+        title='Easiness vs. Usefulness',
+        yaxis=dict(title='Usefulness', range=[-1.1, 1]),
+        xaxis=dict(title='Easiness', range=[-1.1, 1.1]),
+    )
     if show:
         fig.show()
     return fig
@@ -115,4 +124,4 @@ def attendance_vs_grades(df: pd.DataFrame, box=True, show=True):
 
 if __name__ == "__main__":
     df = load_data()
-    attendances_vs_grades(df)
+    ease_vs_use(df)
