@@ -16,7 +16,10 @@ export default function Background() {
       <SpotifyEmbed
         title="Our top songs of 2023"
         playlistId={"3tiseqtV4xRZMu82daC1bk"}
-      />
+      >
+        <p>Top genres: pop, rap, pov: indie, EDM, art pop</p>
+        <p>Top artists: Taylor Swift, Peach Pit, Drake</p>
+      </SpotifyEmbed>
     </Section>
   );
 }

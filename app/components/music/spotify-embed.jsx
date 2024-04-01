@@ -7,7 +7,7 @@ import Image from "next/image";
 
 import SyncIcon from "@icons/sync.svg";
 
-const SpotifyEmbed = ({ title, playlistId }) => {
+const SpotifyEmbed = ({ title, children, playlistId }) => {
   const [playlistData, setPlaylistData] = useState(null);
   const [tracksStart, setTracksStart] = useState(0);
 
@@ -19,8 +19,6 @@ const SpotifyEmbed = ({ title, playlistId }) => {
 
     const fetchPlaylistData = async () => {
       try {
-        console.warn("Fetching Playlist Data");
-
         // Step 1: Get Access Token
         const tokenResponse = await axios.post(
           "https://accounts.spotify.com/api/token",
@@ -48,6 +46,8 @@ const SpotifyEmbed = ({ title, playlistId }) => {
           }
         );
 
+        console.log(playlistResponse.data.name, playlistResponse.data.uri);
+
         const shuffledTracks = shuffleArray(
           playlistResponse.data.tracks.items.filter(
             (item) => item.track.preview_url !== null
@@ -62,7 +62,6 @@ const SpotifyEmbed = ({ title, playlistId }) => {
     fetchPlaylistData();
   }, []);
 
-  // Function to shuffle array
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -73,41 +72,45 @@ const SpotifyEmbed = ({ title, playlistId }) => {
 
   const handleLoadMoreTracks = () => {
     if (tracksStart + shownTracks * 2 >= playlistData.length) {
-      // Reset to zero when reaching the end
+      // Reset to zero when another full 3 tracks can't be shown
       setTracksStart(0);
     } else {
-      // Increment by shownTracks
+      // Shown another 3 tracks
       setTracksStart((prevTracksStart) => prevTracksStart + shownTracks);
     }
   };
 
   return (
     <div>
-      <div className="playlist-container space-y-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <h3>{title}</h3>
-            {playlistData && (
-              <button
-                onClick={handleLoadMoreTracks}
-                className="bg-white border border-gray-300 rounded-lg p-0.5 group"
-              >
-                <Image
-                  src={SyncIcon}
-                  className="group-hover:rotate-45 rotate transition-transform"
-                />
-              </button>
-            )}
-          </div>
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <h3>{title}</h3>
+              {playlistData && (
+                <button
+                  onClick={handleLoadMoreTracks}
+                  className="bg-white border border-gray-300 rounded-lg p-0.5 group"
+                >
+                  <Image
+                    src={SyncIcon}
+                    className="group-hover:rotate-45 rotate transition-transform"
+                  />
+                </button>
+              )}
+            </div>
 
-          <a
-            className="underline"
-            href={`https://open.spotify.com/playlist/${playlistId}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            View the full playlist
-          </a>
+            <a
+              className="underline"
+              href={`https://open.spotify.com/playlist/${playlistId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View the full playlist
+            </a>
+          </div>
+          {/* Insights generated with: http://organizeyourmusic.playlistmachinery.com/# */}
+          <p>{children}</p>
         </div>
         {playlistData && (
           <div className="grid grid-cols-3 gap-x-6">
