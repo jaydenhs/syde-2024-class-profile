@@ -35,3 +35,22 @@ h3 {
 .section-layout > .right {
   @apply col-start-9 col-span-4;
 }
+
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - 2rem));
+  }
+}
+
+.marquee-scroll {
+  animation: marquee-scroll 10s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-scroll {
+    animation: none; /* Disables animation */
+  }
+}

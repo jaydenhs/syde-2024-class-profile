@@ -110,7 +110,7 @@ const SpotifyEmbed = ({ title, children, playlistId }) => {
             </a>
           </div>
           {/* Insights generated with: http://organizeyourmusic.playlistmachinery.com/# */}
-          <p>{children}</p>
+          <div>{children}</div>
         </div>
         {playlistData && (
           <div className="grid grid-cols-3 gap-x-6">

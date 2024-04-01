@@ -7,7 +7,7 @@ import SpotifyEmbed from "@components/music/spotify-embed";
 
 export default function Future() {
   return (
-    <Section className="bg-yellow-100 section-layout" id="Future">
+    <Section bgColor="bg-yellow-100" className="section-layout" id="Future">
       <h2>FUTURE</h2>
     </Section>
   );

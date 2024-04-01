@@ -12,15 +12,17 @@ import Future from "@sections/6-future";
 
 export default function Home() {
   return (
-    <main>
-      <Hero />
-      <Background />
-      <Academics />
-      <Coop />
-      <Syde />
-      <Lifestyle />
-      <Future />
+    <>
+      <main>
+        <Hero />
+        <Background />
+        <Academics />
+        <Coop />
+        <Syde />
+        <Lifestyle />
+        <Future />
+      </main>
       <Nav />
-    </main>
+    </>
   );
 }

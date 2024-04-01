@@ -11,7 +11,7 @@ import Pic3 from "@images/2-academics/IMG_8284.jpg";
 
 export default function Academics() {
   return (
-    <Section className="bg-purple-100 section-layout" id="Academics">
+    <Section bgColor="bg-purple-100" className="section-layout" id="Academics">
       <h2>ACADEMICS</h2>
       <Graph src="/graphs/2-academics/grades.html"></Graph>
       <div className="flex flex-col relative right">
@@ -26,6 +26,7 @@ export default function Academics() {
         />
       </div>
       <Graph src="/graphs/2-academics/ease_vs_use.html"></Graph>
+
       <Graph src="/graphs/2-academics/attendance.html"></Graph>
       <SpotifyEmbed
         title="Songs that remind us of Waterloo"

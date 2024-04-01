@@ -7,7 +7,7 @@ import SpotifyEmbed from "@components/music/spotify-embed";
 
 export default function Lifestyle() {
   return (
-    <Section className="bg-pink-100 section-layout" id="Lifestyle">
+    <Section bgColor="bg-pink-100" className="section-layout" id="Lifestyle">
       <h2>LIFESTYLE</h2>
       <SpotifyEmbed
         title="Our hype-up gym songs"

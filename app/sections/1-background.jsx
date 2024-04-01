@@ -7,7 +7,11 @@ import SpotifyEmbed from "@components/music/spotify-embed";
 
 export default function Background() {
   return (
-    <Section className="bg-indigo-100 section-layout" id="Background">
+    <Section
+      bgColor="bg-indigo-100"
+      className=" section-layout"
+      id="Background"
+    >
       <h2>BACKGROUND</h2>
       <Graph src="/graphs/1-background/ethnicity.html" />
       <Graph src="/graphs/1-background/gender.html" />

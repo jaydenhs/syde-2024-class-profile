@@ -37,8 +37,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## To-do's
 
-- [ ] Nav
-  - [ ] show section titles always
 - [ ] Hero
   - [ ] add ticker scroller underneath title w sections
 - [ ] Music
