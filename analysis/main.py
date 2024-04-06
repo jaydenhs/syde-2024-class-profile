@@ -7,6 +7,7 @@ import coop
 import background
 import syde
 import life
+import future
 
 
 
@@ -32,28 +33,32 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
         '1-background': {
             'ethnicity': background.ethnicity(df, show=False),
             'gender': background.gender(df, show=False),
-            'parent_education': background.parent_education(df, show=False),
-            'sexual_orientation': background.sexual_orientation(df, show=False),
+            'parent-education': background.parent_education(df, show=False),
+            'sexual-orientation': background.sexual_orientation(df, show=False),
             # 'international': background.international(df, show=False),
         },
         '2-academics': {
-            'ease_vs_use': academics.ease_vs_use(df, show=False),
+            'ease-vs-use': academics.ease_vs_use(df, show=False),
             'attendance': academics.attendance(df, show=False),
             'grades': academics.grades(df, show=False),
-            'how_challenging': academics.challenging(df, show=False),
-            'attendance_vs_grades': academics.attendance_vs_grades(df, show=False),
-            # 'friends_vs_grades': academics.friends_vs_grades(df, show=False),
+            'how-challenging': academics.challenging(df, show=False),
+            'attendance-vs-grades': academics.attendance_vs_grades(df, show=False),
+            # 'friends-vs-grades': academics.friends_vs_grades(df, show=False),
         },
         '3-co-op': {
             'salary': coop.salary(df, show=False),
-            'work_model': coop.work_model(df, show=False),
-            # 'salary_vs_grades': coop.grades_vs_salary(df, show=False),
+            'work-model': coop.work_model(df, show=False),
+            # 'salary-vs-grades': coop.grades_vs_salary(df, show=False),
         },
         '4-syde': {
             'restart-program': syde.restart_program(df, show=False),
         },
         '5-life': {
             'politics': life.political_leaning(df, show=False),
+        },
+        '6-future': {
+            'kids-by-gender': future.kids_by_gender(df, show=False),
+            'marriage-by-gender': future.marriage_by_gender(df, show=False),
         },
     }
 
@@ -65,16 +70,17 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
 
     if save_dir is not None:
         for subdir, figs in fig_dirs.items():
-            directory = os.path.join(save_dir, subdir)
-            os.makedirs(directory, exist_ok=True)
-            print(f"Saving {len(figs)} plots to {directory}")
-            for name, fig in figs.items():
-                filepath = os.path.join(directory, f'{name}.html')
-                if os.path.exists(filepath) and not replace:
-                    print(f"Skipping {name} as it already exists.")
-                    continue
-                fig = style_figure(fig)
-                fig.write_html(filepath, config={'displayModeBar': False, 'displaylogo': False})
+            if section is None or section in subdir:
+                directory = os.path.join(save_dir, subdir)
+                os.makedirs(directory, exist_ok=True)
+                print(f"Saving {len(figs)} plots to {directory}")
+                for name, fig in figs.items():
+                    filepath = os.path.join(directory, f'{name}.html')
+                    if os.path.exists(filepath) and not replace:
+                        print(f"Skipping {name} as it already exists.")
+                        continue
+                    fig = style_figure(fig)
+                    fig.write_html(filepath, config={'displayModeBar': False, 'displaylogo': False})
 
 
 if __name__ == "__main__":
