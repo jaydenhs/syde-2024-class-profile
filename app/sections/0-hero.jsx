@@ -26,7 +26,11 @@ const renderTickerDivs = () => {
 
 export default function Hero() {
   return (
-    <Section className="flex flex-col space-y-8 items-center" id="Home">
+    <Section
+      className="flex flex-col space-y-8 items-center"
+      bgColor="bg-white"
+      id="Home"
+    >
       <div className="flex flex-col w-full items-center space-y-6 md:space-y-4">
         <h1 className="md:text-center">SYDE &#39;24 CLASS PROFILE</h1>
         <div className="flex w-full overflow-hidden gap-8 relative select-none border-black border-y-2 py-2">

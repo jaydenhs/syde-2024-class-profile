@@ -9,7 +9,7 @@ export default function NotFound() {
         <h2>404 Not Found</h2>
         <p>you get a 3/5 in page navigation</p>
         <Image className="w-96 rounded-xl" src={Borland} />
-        <Link href="/">Return Home</Link>
+        <Link href="/">Return to Class Profile</Link>
       </div>
     </main>
   );
