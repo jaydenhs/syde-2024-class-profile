@@ -6,6 +6,7 @@ import academics
 import coop
 import background
 import syde
+import life
 
 
 
@@ -51,6 +52,9 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
         '4-syde': {
             'restart-program': syde.restart_program(df, show=False),
         },
+        '5-life': {
+            'politics': life.political_leaning(df, show=False),
+        },
     }
 
     if show:
@@ -75,4 +79,4 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
 
 if __name__ == "__main__":
     # generate_plots('public/graphs/', replace=True)
-    generate_plots(show=True, section='coop')
+    generate_plots(show=True)
