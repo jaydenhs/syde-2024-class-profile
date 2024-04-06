@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import TrackCard from "./track-card";
 import axios from "axios";
 import Image from "next/image";
@@ -8,11 +8,38 @@ import Link from "next/link";
 
 import SyncIcon from "@icons/sync.svg";
 
+const useMediaQuery = (width) => {
+  const [targetReached, setTargetReached] = useState(false);
+
+  const updateTarget = useCallback((e) => {
+    if (e.matches) {
+      setTargetReached(true);
+    } else {
+      setTargetReached(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    const media = window.matchMedia(`(max-width: ${width}px)`);
+    media.addListener(updateTarget);
+
+    // Check on mount (callback is not called until a change occurs)
+    if (media.matches) {
+      setTargetReached(true);
+    }
+
+    return () => media.removeListener(updateTarget);
+  }, []);
+
+  return targetReached;
+};
+
 const SpotifyEmbed = ({ title, children, playlistId }) => {
   const [playlistData, setPlaylistData] = useState(null);
   const [tracksStart, setTracksStart] = useState(0);
 
-  const shownTracks = 3;
+  const isBreakpoint = useMediaQuery(768);
+  const shownTracks = isBreakpoint ? 4 : 3;
 
   useEffect(() => {
     const clientId = "3b688e6717e64da4a591c11875fdcbc0";
@@ -85,8 +112,8 @@ const SpotifyEmbed = ({ title, children, playlistId }) => {
     <div>
       <div className="space-y-6">
         <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
+          <div className="flex flex-col md:items-center md:flex-row justify-between">
+            <div className="flex items-center justify-between md:justify-normal space-x-2 mb-1 md:mb-0">
               <h3>{title}</h3>
               {playlistData && (
                 <button
@@ -95,7 +122,7 @@ const SpotifyEmbed = ({ title, children, playlistId }) => {
                 >
                   <Image
                     src={SyncIcon}
-                    className="group-hover:rotate-45 rotate transition-transform"
+                    className="w-8 md:w-6 group-hover:rotate-45 rotate transition-transform"
                   />
                 </button>
               )}
@@ -112,7 +139,7 @@ const SpotifyEmbed = ({ title, children, playlistId }) => {
           <div>{children}</div>
         </div>
         {playlistData && (
-          <div className="grid grid-cols-3 gap-x-6">
+          <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-3 md:grid-rows-1 gap-x-6 gap-y-4">
             {playlistData
               .slice(tracksStart, tracksStart + shownTracks)
               .map((item, index) => {

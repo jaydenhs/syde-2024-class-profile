@@ -14,17 +14,18 @@ h2 {
 }
 
 h1 {
-  font-size: 7.5rem;
+  @apply text-8xl/none md:text-[7.5rem]/none;
 }
 h2 {
-  font-size: 6rem;
+  @apply text-7xl/none md:text-8xl/none;
 }
 h3 {
   font-size: 1.5rem;
-  font-weight: 500;
+  @apply text-2xl/normal;
+  font-weight: 550;
 }
 h4 {
-  font-weight: 500;
+  font-weight: 600;
 }
 
 a {
@@ -36,11 +37,15 @@ a {
 }
 
 .section-layout > * {
-  @apply col-span-7;
+  @apply col-span-12 lg:col-span-7;
+}
+
+.section-layout > .full {
+  @apply col-span-12;
 }
 
 .section-layout > .right {
-  @apply col-start-9 col-span-4;
+  @apply col-span-12 lg:col-start-9 lg:col-span-4;
 }
 
 @keyframes marquee-scroll {

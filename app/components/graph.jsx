@@ -9,12 +9,11 @@ export default function Graph({
   return (
     <div className={`space-y-4 ${className}`}>
       <div>
-        <h3>{title ? title : src}</h3>
+        <h3 className="break-words">{title ? title : src}</h3>
         {children}
       </div>
       <iframe
-        className="w-full"
-        height="600"
+        className="w-full h-[360px] md:h-[600px]"
         src={`${src}?show_link=false`}
       ></iframe>
     </div>

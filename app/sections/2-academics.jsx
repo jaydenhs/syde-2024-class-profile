@@ -2,7 +2,7 @@ import React from "react";
 
 import Section from "@components/section";
 import Graph from "@components/graph";
-import ImageBlob from "@components/image-blob";
+import ImageCollection from "@components/image-collection";
 import SpotifyEmbed from "@components/music/spotify-embed";
 
 import Pic1 from "@images/2-academics/IMG_1994.png";
@@ -14,19 +14,8 @@ export default function Academics() {
     <Section bgColor="bg-purple-100" className="section-layout" id="Academics">
       <h2>ACADEMICS</h2>
       <Graph src="/graphs/2-academics/grades.html"></Graph>
-      <div className="flex flex-col relative right">
-        <ImageBlob className={"absolute w-48 h-auto"} src={Pic1} />
-        <ImageBlob
-          className={"absolute top-64 right-0 w-72 h-auto"}
-          src={Pic2}
-        />
-        <ImageBlob
-          className={"absolute top-128 left-2 w-72 h-auto"}
-          src={Pic3}
-        />
-      </div>
+      <ImageCollection srcs={[Pic1, Pic2, Pic3]} />
       <Graph src="/graphs/2-academics/ease_vs_use.html"></Graph>
-
       <Graph src="/graphs/2-academics/attendance.html"></Graph>
       <SpotifyEmbed
         title="Songs that remind us of Waterloo"

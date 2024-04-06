@@ -27,20 +27,23 @@ const renderTickerDivs = () => {
 export default function Hero() {
   return (
     <Section className="flex flex-col space-y-8 items-center" id="Home">
-      <div className="flex flex-col items-center space-y-4">
-        <h1>SYDE &#39;24 CLASS PROFILE</h1>
-        <div className="flex overflow-hidden gap-8 relative select-none border-black border-y-2 py-2 border-">
+      <div className="flex flex-col w-full items-center space-y-6 md:space-y-4">
+        <h1 className="md:text-center">SYDE &#39;24 CLASS PROFILE</h1>
+        <div className="flex w-full overflow-hidden gap-8 relative select-none border-black border-y-2 py-2">
           {renderTickerDivs()}
           {renderTickerDivs()}
         </div>
       </div>
       <div className="relative">
-        <ImageBlob src={classPic1} className={"flex-1 object-cover"} />
+        <ImageBlob
+          src={classPic1}
+          className={"scale-150 my-12 md:my-0 md:scale-100 object-cover"}
+        />
         <Link
           href="/about"
-          className="absolute right-0 bottom-0 flex flex-row items-center w-48 h-48 p-0 text-center no-underline rounded-full bg-purple-100 border-purple-400 border-4 hover:bg-purple-200  hover:border-8 transition-all"
+          className="absolute right-0 -bottom-12 md:bottom-0 flex flex-row items-center w-32 h-32 md:w-48 md:h-48 p-4 text-center no-underline rounded-full bg-purple-100 border-purple-400 border-4 hover:bg-purple-200  hover:border-8 transition-all"
         >
-          <h3 className="mx-auto">About this project</h3>
+          <p className="text-base md:text-3xl mx-auto">About this project</p>
         </Link>
       </div>
       {/* <ImageBlob src={classPic2} className={"flex-1 object-cover"} /> */}

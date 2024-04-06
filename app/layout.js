@@ -1,4 +1,10 @@
-import { Anton, Work_Sans } from "next/font/google";
+import {
+  Anton,
+  Work_Sans,
+  Plus_Jakarta_Sans,
+  Sometype_Mono,
+  Lora,
+} from "next/font/google";
 import "./globals.css";
 
 const anton = Anton({
@@ -8,7 +14,7 @@ const anton = Anton({
   display: "swap",
 });
 
-const work_sans = Work_Sans({
+const work_sans = Lora({
   subsets: ["latin"],
   variable: "--font-work-sans",
   display: "swap",
@@ -26,7 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`scroll-smooth h-full ${anton.variable} ${work_sans.variable}`}
+      className={`scroll-smooth h-full overflow-x-hidden ${anton.variable} ${work_sans.variable}`}
     >
       <body className="relative h-full">{children}</body>
     </html>
