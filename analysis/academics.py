@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 from source import load_data, coerce_numeric, search_headers
+from generic import pie_plot
 
 
 EASE_SCALE = {
@@ -123,12 +124,10 @@ def attendance_vs_grades(df: pd.DataFrame, box=True, show=True):
 
 
 def challenging(df: pd.DataFrame, show=True):
-    data = df['academics']['how-challenging']
-    data = data.apply(lambda x: x.str.split(' ').str[0].apply(float))
-    fig = px.pie
+    return pie_plot(df, 'how-challenging', 'academics', normalize=False, show=show)
 
 
-def impostor_syndrome(df: pd.DataFrame, show=True):
+def imposter_syndrome(df: pd.DataFrame, show=True):
     data = df['academics'][search_headers('imposter')] # pd.DataFrame
     data = data.apply(lambda x: x.str.split(' ').str[0].apply(float))
 
@@ -145,4 +144,4 @@ def impostor_syndrome(df: pd.DataFrame, show=True):
 
 if __name__ == "__main__":
     df = load_data()
-    impostor_syndrome(df)
+    imposter_syndrome(df)

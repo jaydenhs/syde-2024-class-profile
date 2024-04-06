@@ -31,7 +31,7 @@ def get_section_header_map():
             'coop-details', 'ww-jobs', 'not-ww-jobs',
         ],
         'syde': ['restart-program', 'close-friends', 'in-1a', 'transfers-well-integrated'],
-        'life': ['design-teams', 'sports', 'clubs', 'reps', 'volunteering', 'fav-restaurant', 'political-party', 'religions', 'belief-god'],
+        'life': ['design-teams', 'sports', 'clubs', 'reps', 'volunteering', 'fav-restaurant', 'politics', 'religions', 'belief-god'],
         'future': ['debt', 'savings',  'percent-financed', 'stay-in-touch', 'grad-trip', 'marrying', 'kids', 'peng', 'post-grad-plan'],
         'grad-school': ['schools-applied', 'depts-applied', 'school-accepted', 'dept-accepted'],
         'job': ['loc-ft', 'ret-to-canada', 'work-remote', 'prev-coop', 'title-ft', 'pay-ft', 'ret-to-school'],

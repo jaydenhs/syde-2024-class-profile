@@ -38,6 +38,7 @@ def generate_plots(save_dir=None, replace=False, show=False):
             'ease_vs_use': academics.ease_vs_use(df, show=show),
             'attendance': academics.attendance(df, show=show),
             'grades': academics.grades(df, show=show),
+            'how_challenging': academics.challenging(df, show=show),
             'attendance_vs_grades': academics.attendance_vs_grades(df, show=show),
             # 'friends_vs_grades': academics.friends_vs_grades(df, show=show),
         },
@@ -63,5 +64,5 @@ def generate_plots(save_dir=None, replace=False, show=False):
 
 
 if __name__ == "__main__":
-    generate_plots('public/graphs/', replace=True)
-    # generate_plots(show=True)
+    # generate_plots('public/graphs/', replace=True)
+    generate_plots(show=True)
