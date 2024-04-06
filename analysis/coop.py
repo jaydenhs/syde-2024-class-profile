@@ -34,7 +34,18 @@ def grades_vs_salary(df: pd.DataFrame, show=True):
         fig.show()
     return fig
 
+def work_model(df: pd.DataFrame, show=True):
+    data = df[search_headers('model', 'coop')]['coop']
+    data = data.melt(var_name='term', value_name='coop-model')
+    data['term'] = data['term'].str.replace('model-', '')
+    data = data.groupby('term')['coop-model'].value_counts(normalize=True).reset_index(name='count')
+    fig = px.bar(data, x='term', y='count', color='coop-model', barmode='stack')
+    fig.update_layout(title='Remote Work Distribution', xaxis_title='Term', yaxis_title='Work Model %')
+    if show:
+        fig.show()
+    return fig
+
 
 if __name__ == "__main__":
     df = load_data()
-    grades_vs_salary(df)
+    work_model(df)

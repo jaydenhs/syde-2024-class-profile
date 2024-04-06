@@ -43,6 +43,7 @@ def generate_plots(save_dir=None, replace=False, show=False):
         },
         '3-coop': {
             'salary': coop.salary(df, show=show),
+            'work_model': coop.work_model(df, show=show),
             # 'salary_vs_grades': coop.grades_vs_salary(df, show=show),
         }
     }

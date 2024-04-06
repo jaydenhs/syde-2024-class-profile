@@ -122,6 +122,27 @@ def attendance_vs_grades(df: pd.DataFrame, box=True, show=True):
     return fig
 
 
+def challenging(df: pd.DataFrame, show=True):
+    data = df['academics']['how-challenging']
+    data = data.apply(lambda x: x.str.split(' ').str[0].apply(float))
+    fig = px.pie
+
+
+def impostor_syndrome(df: pd.DataFrame, show=True):
+    data = df['academics'][search_headers('imposter')] # pd.DataFrame
+    data = data.apply(lambda x: x.str.split(' ').str[0].apply(float))
+
+    fig = px.box(data)
+    fig.update_layout(
+        title='Impostor Syndrome by Term',
+        xaxis_title='Term',
+        yaxis_title='Impostor Syndrome',
+    )
+    if show:
+        fig.show()
+    return fig
+
+
 if __name__ == "__main__":
     df = load_data()
-    ease_vs_use(df)
+    impostor_syndrome(df)
