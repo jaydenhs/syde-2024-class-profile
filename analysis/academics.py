@@ -124,7 +124,7 @@ def attendance_vs_grades(df: pd.DataFrame, box=True, show=True):
 
 
 def challenging(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'how-challenging', 'academics', normalize=False, show=show)
+    return pie_plot(df, 'academics', 'how-challenging', normalize=False, show=show)
 
 
 def imposter_syndrome(df: pd.DataFrame, show=True):

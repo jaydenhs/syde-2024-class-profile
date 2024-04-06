@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 
 
-def pie_plot(df: pd.DataFrame, key: str, section='background', parse_multi_answer=True, normalize=True, show=True):
+def pie_plot(df: pd.DataFrame, section: str, key: str, parse_multi_answer=True, normalize=True, show=True):
     data = df[section, key].dropna()
     if parse_multi_answer:
         data = data.str.split(',').explode()

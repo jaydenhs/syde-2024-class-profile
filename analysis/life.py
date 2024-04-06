@@ -5,7 +5,7 @@ from generic import pie_plot
 
 
 def political_leaning(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'politics', 'life', show=show)
+    return pie_plot(df, 'life', 'politics', show=show)
 
 
 if __name__ == "__main__":
