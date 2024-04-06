@@ -5,6 +5,7 @@ from source import load_data
 import academics
 import coop
 import background
+import syde
 
 
 
@@ -42,11 +43,14 @@ def generate_plots(save_dir=None, replace=False, show=False):
             'attendance_vs_grades': academics.attendance_vs_grades(df, show=show),
             # 'friends_vs_grades': academics.friends_vs_grades(df, show=show),
         },
-        '3-coop': {
+        '3-co-op': {
             'salary': coop.salary(df, show=show),
             'work_model': coop.work_model(df, show=show),
             # 'salary_vs_grades': coop.grades_vs_salary(df, show=show),
-        }
+        },
+        '4-syde': {
+            'restart-program': syde.restart_program(df, show=show),
+        },
     }
 
     if save_dir is not None:
