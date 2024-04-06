@@ -37,7 +37,7 @@ export default function Hero() {
       <div className="relative">
         <ImageBlob
           src={classPic1}
-          className={"scale-150 my-12 md:my-0 md:scale-100 object-cover"}
+          className={"scale-150 mt-16 mb-12 md:my-0 md:scale-100 object-cover"}
         />
         <Link
           href="/about"
