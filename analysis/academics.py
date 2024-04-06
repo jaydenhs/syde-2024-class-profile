@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import plotly.express as px
 
-from source import load_data, coerce_numeric, search_headers
-from generic import pie_plot
+from source import load_data, search_headers
+from generic import pie_plot, coerce_numeric
 
 
 EASE_SCALE = {

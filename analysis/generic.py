@@ -30,3 +30,11 @@ def multi_pie(df: pd.DataFrame, key: str, values: list, show=True):
     if show:
         fig.show()
     return fig
+
+
+def coerce_numeric(df: pd.DataFrame, errors='coerce') -> pd.DataFrame:
+    """Coerce all columns in the DataFrame to numeric. If a value cannot be coerced, it will be replaced with NaN by default."""
+    data = df.copy()
+    for column in data.columns:
+        data[column] = pd.to_numeric(data[column], errors=errors)
+    return data

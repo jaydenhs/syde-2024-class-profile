@@ -1,7 +1,8 @@
 import pandas as pd
 import plotly.express as px
 
-from source import load_data, coerce_numeric, search_headers
+from source import load_data, search_headers
+from generic import coerce_numeric
 
 
 

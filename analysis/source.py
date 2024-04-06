@@ -39,6 +39,14 @@ def get_section_header_map():
     }
 
 
+def get_edgy_headers():
+    return  [
+        'timestamp', 'sydecest', 'crush', 'longest-relation', 'relation-status', 'relation-forever', 
+        'courses-failed', 'lost-viriginity', 'cry-spot', 'mental-health', 'mental-health-issues', 'counselling',
+        'sex-partners', 'num-relations', 'drugs', 'cheated-in-person', 'cheated-online', 'cheated-caught',
+    ]
+
+
 def get_sections():
     return ['background', 'academics', 'exchange', 'coop', 'syde', 'life', 'future', 'grad-school', 'job', 'fun']
 
@@ -74,12 +82,14 @@ def load_data() -> pd.DataFrame:
     return df
 
 
-def coerce_numeric(df: pd.DataFrame, errors='coerce') -> pd.DataFrame:
-    """Coerce all columns in the DataFrame to numeric. If a value cannot be coerced, it will be replaced with NaN by default."""
-    data = df.copy()
-    for column in data.columns:
-        data[column] = pd.to_numeric(data[column], errors=errors)
-    return data
+def load_edgy_data() -> pd.DataFrame:
+    try:
+        df = pd.read_csv('datasets/Edgy Survey (Responses) - Form Responses 1.csv')
+    except FileNotFoundError:
+        raise FileNotFoundError("Please download the survey data from the Google Drive and place it in the datasets folder.")
+    df.columns = get_edgy_headers()
+    return df
+
 
 
 if __name__ == "__main__":
