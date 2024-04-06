@@ -13,7 +13,7 @@ import Future from "@sections/6-future";
 export default function Home() {
   return (
     <>
-      <main>
+      <main className="divide-y-2 divide-dashed divide-slate-400">
         <Hero />
         <Background />
         <Academics />

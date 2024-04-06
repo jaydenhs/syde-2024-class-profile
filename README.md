@@ -42,3 +42,5 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
   - [ ] add fun transition to swap between class photos
 - [ ] Music
   - [ ] add placeholder for album art to prevent layout shift
+- [ ] Nav
+  - [ ] add nav to mobile

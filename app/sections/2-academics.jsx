@@ -18,8 +18,8 @@ export default function Academics() {
         title="Our grades were the highest in 4A, when we had the most choice over the courses we took."
         src="/graphs/2-academics/grades.html"
       >
-        As expected, our grades inflated during COVID (1B-2B) and fell by 10%
-        when we returned in-person.
+        As expected, our median grade inflated by 8% during COVID (1B-2B) and
+        fell by 10% when we returned in-person.
       </Graph>
       <ImageCollection srcs={[Pic1, Pic2, Pic3]} />
       <Graph
