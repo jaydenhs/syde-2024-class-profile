@@ -35,6 +35,7 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
             'gender': background.gender(df, show=False),
             'parent-education': background.parent_education(df, show=False),
             'sexual-orientation': background.sexual_orientation(df, show=False),
+            'parent-income': background.parent_income(df, show=False),
             # 'international': background.international(df, show=False),
         },
         '2-academics': {
@@ -47,14 +48,19 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
         },
         '3-co-op': {
             'salary': coop.salary(df, show=False),
+            'brain-drain': coop.braindrain(df, show=False),
+            'grades-vs-salary': coop.grades_vs_salary(df, show=False),
             'work-model': coop.work_model(df, show=False),
             # 'salary-vs-grades': coop.grades_vs_salary(df, show=False),
         },
         '4-syde': {
             'restart-program': syde.restart_program(df, show=False),
+            'close-friends': syde.close_friends(df, show=False),
+            'transfer-well-integrated': syde.transfer_well_integrated(df, show=False),
         },
-        '5-life': {
+        '5-lifestyle': {
             'politics': life.political_leaning(df, show=False),
+            'politics': life.myers_briggs(df, show=False),
         },
         '6-future': {
             'kids-by-gender': future.kids_by_gender(df, show=False),
@@ -84,5 +90,5 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
 
 
 if __name__ == "__main__":
-    # generate_plots('public/graphs/', replace=True)
-    generate_plots(show=True)
+    generate_plots('public/graphs/', replace=True)
+    # generate_plots(show=True)
