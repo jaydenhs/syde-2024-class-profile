@@ -15,7 +15,7 @@ const sections = [
 
 export default function Nav() {
   return (
-    <div className="fixed left-0 top-1/2 -translate-y-1/2 group/nav rounded-r-lg ml-4 border-gray-200 hover:bg-white hover:border-2 hover:border-l-0 hover:ml-0 hover:p-4">
+    <div className="fixed left-0 top-1/2 -translate-y-1/2 group/nav rounded-r-lg ml-4 border-gray-200 2xl:bg-white 2xl:border-2 2xl:border-l-0 2xl:ml-0 2xl:p-4 hover:bg-white hover:border-2 hover:border-l-0 hover:ml-0 hover:p-4">
       {sections.map((section) => (
         <Link
           href={`#${section.text}`}
@@ -24,9 +24,11 @@ export default function Nav() {
         >
           <div className="group flex h-full items-center space-x-2">
             <div
-              className={`w-6 group-hover:w-12 h-1/4 rounded-xl ${section.color} transition-all duration-200`}
+              className={`w-6 group-hover:w-12 h-1/4 rounded-2xl ${section.color} transition-all duration-200`}
             />
-            <p className="hidden group-hover/nav:inline">{section.text}</p>
+            <p className="hidden 2xl:inline group-hover/nav:inline">
+              {section.text}
+            </p>
           </div>
         </Link>
       ))}
@@ -39,7 +41,7 @@ export default function Nav() {
           className="group-hover:scale-110 transition-transform"
           src={HelpIcon}
         />
-        <p className="hidden group-hover/nav:inline">About</p>
+        <p className="hidden 2xl:inline group-hover/nav:inline">About</p>
       </Link>
     </div>
   );
