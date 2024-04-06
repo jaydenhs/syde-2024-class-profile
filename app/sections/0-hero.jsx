@@ -43,7 +43,7 @@ export default function Hero() {
           href="/about"
           className="absolute right-0 -bottom-12 md:bottom-0 flex flex-row items-center w-32 h-32 md:w-48 md:h-48 p-4 text-center no-underline rounded-full bg-purple-100 border-purple-400 border-4 hover:bg-purple-200  hover:border-8 transition-all"
         >
-          <p className="text-base md:text-3xl mx-auto">About this project</p>
+          <p className="text-base md:text-2xl mx-auto">About this project</p>
         </Link>
       </div>
       {/* <ImageBlob src={classPic2} className={"flex-1 object-cover"} /> */}

@@ -1,16 +1,11 @@
 import React from "react";
 
-export default function Graph({
-  title,
-  src,
-  children = React.createElement("p", null, "Secondary takeaways"),
-  className,
-}) {
+export default function Graph({ title, src, children, className }) {
   return (
     <div className={`space-y-4 ${className}`}>
-      <div>
+      <div className="space-y-2">
         <h3 className="break-words">{title ? title : src}</h3>
-        {children}
+        {children && <div>{children}</div>}
       </div>
       <iframe
         className="w-full h-[360px] md:h-[600px]"
