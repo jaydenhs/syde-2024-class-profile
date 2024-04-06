@@ -65,6 +65,9 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
         '6-future': {
             'kids-by-gender': future.kids_by_gender(df, show=False),
             'marriage-by-gender': future.marriage_by_gender(df, show=False),
+            'next-year-plans': future.next_year_plans(df, show=False),
+            'salary_vs_location': future.salary_vs_location(df, show=False),
+            'full_time_locations': future.full_time_locations(df, show=False),
         },
     }
 
