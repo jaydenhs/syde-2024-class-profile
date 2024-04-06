@@ -3,21 +3,21 @@ import plotly.express as px
 import plotly.figure_factory as ff
 
 from source import load_data
-from generic import multi_pie, pie_plot
+from generic import multi_pie_plot, pie_plot
 
 
 def kids_by_gender(df: pd.DataFrame, show=True):
     gender = df['background']['gender']
     kids = df['future']['kids']
     data = pd.concat([gender, kids], axis=1)
-    return multi_pie(data, 'gender', ['Male', 'Female'], show=show)
+    return multi_pie_plot(data, 'gender', ['Male', 'Female'], show=show)
 
 
 def marriage_by_gender(df: pd.DataFrame, show=True):
     gender = df['background']['gender']
     marriage = df['future']['marrying']
     data = pd.concat([gender, marriage], axis=1)
-    return multi_pie(data, 'gender', ['Male', 'Female'], show=show)
+    return multi_pie_plot(data, 'gender', ['Male', 'Female'], show=show)
     
 
 def next_year_plans(df: pd.DataFrame, show=True):

@@ -4,14 +4,8 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-def pie_plot(df: pd.DataFrame, section: str, key: str, parse_multi_answer=True, normalize=True, show=True):
-    data = df[section, key].dropna()
-    if parse_multi_answer:
-        data = data.str.split(',').explode()
-        data = data.str.strip()
-    data = data.value_counts(normalize=normalize)
-    if normalize:
-        data *= 100
+def pie_plot(df: pd.DataFrame, section: str, key: str, show=True, **kwargs):
+    data = get_pie_data(df[section, key], **kwargs)
     fig = px.pie(names=data.index, values=data.values, color_discrete_sequence=px.colors.qualitative.Set1)
     fig.update_layout(title=f'{key.capitalize()} Distribution', showlegend=False)
     fig.update_traces(textinfo='percent+label')
@@ -20,7 +14,18 @@ def pie_plot(df: pd.DataFrame, section: str, key: str, parse_multi_answer=True, 
     return fig
 
 
-def multi_pie(df: pd.DataFrame, key: str, values: list, show=True):
+def get_pie_data(series: pd.Series, parse_multi_answer=True, normalize=True):
+    data = series.dropna().copy()
+    if parse_multi_answer:
+        data = data.str.split(',').explode()
+        data = data.str.strip()
+    data = data.value_counts(normalize=normalize)
+    if normalize:
+        data *= 100
+    return data
+
+
+def multi_pie_plot(df: pd.DataFrame, key: str, values: list, show=True):
     fig = make_subplots(rows=1, cols=len(values), subplot_titles=values, specs=[[{"type": "pie"}] * len(values)])
     for i, value in enumerate(values, 1):
         portion = df[df[key] == value].value_counts(normalize=True).reset_index()
