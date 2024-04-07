@@ -17,8 +17,8 @@ export default function Syde() {
         title="67% of us would've chosen SYDE if we could start university again."
         src="/graphs/4-syde/restart-program.html"
       >
-        16% of us would've chosen a different engineering program, and 9% of us
-        would've chosen Computer Science.
+        16% of us would've chosen a different engineering program, and 9%
+        of us would've chosen Computer Science.
         {/* Compare with past profiles? 2021 was 86.7% SYDE, 2023 was 67% SYDE - decreasing trend of SYDE confidence? */}
       </Graph>
       <SpotifyEmbed

@@ -32,9 +32,7 @@ export default function Hero() {
       id="Home"
     >
       <div className="flex flex-col w-full items-center space-y-6 md:space-y-4">
-        <h1 className="px-4 md:px-0 md:text-center">
-          SYDE &#39;24 CLASS PROFILE
-        </h1>
+        <h1 className="px-4 md:px-0 md:text-center">SYDE '24 CLASS PROFILE</h1>
         <div className="flex w-full overflow-hidden gap-8 relative select-none border-black border-y-2 py-2">
           {renderTickerDivs()}
           {renderTickerDivs()}
