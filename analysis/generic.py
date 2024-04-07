@@ -4,10 +4,10 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-def pie_plot(df: pd.DataFrame, section: str, key: str, show=True, **kwargs):
-    data = get_pie_data(df[section, key], **kwargs)
+def pie_plot(series: pd.Series, show=True, **kwargs):
+    data = get_pie_data(series, **kwargs)
     fig = px.pie(names=data.index, values=data.values, color_discrete_sequence=px.colors.qualitative.Set1)
-    fig.update_layout(title=f'{key.capitalize()} Distribution', showlegend=False)
+    fig.update_layout(showlegend=False)
     fig.update_traces(textinfo='percent+label')
     if show:
         fig.show()

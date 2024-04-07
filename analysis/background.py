@@ -63,7 +63,7 @@ def sexual_orientation(df: pd.DataFrame, show=True, **kwargs):
 
 
 def parent_education(df: pd.DataFrame, **kwargs):
-    return pie_plot(df, 'background', 'parent-degree', **kwargs)
+    return pie_plot(df['background', 'parent-degree'], **kwargs)
 
 def parent_income(df: pd.DataFrame, show=True):
     data = df['background', 'parent-income'].dropna().value_counts(normalize=True) * 100
@@ -77,7 +77,7 @@ def parent_income(df: pd.DataFrame, show=True):
 
 
 def international(df: pd.DataFrame, **kwargs):
-    return pie_plot(df, 'background', 'is-international', **kwargs)
+    return pie_plot(df['background', 'is-international'], **kwargs)
 
 
 if __name__ == "__main__":

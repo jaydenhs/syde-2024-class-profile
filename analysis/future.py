@@ -21,11 +21,11 @@ def marriage_by_gender(df: pd.DataFrame, show=True):
     
 
 def next_year_plans(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'future', 'post-grad-plan', show=show)
+    return pie_plot(df['future', 'post-grad-plan'], show=show)
 
 
 def full_time_locations(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'job', 'loc-ft', show=show)
+    return pie_plot(df['job', 'loc-ft'], show=show)
 
 
 def full_time_salary(df: pd.DataFrame, show=True):

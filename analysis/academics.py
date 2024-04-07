@@ -29,6 +29,16 @@ PERCENT_MAP = {
     '60 - 80%': 0.7,
     '80 - 100%': 0.9,
 }
+EXCHANGE_SCHOOL_COUNTRY = {
+    'Lund University': 'Sweden',
+    'Singapore University of Technology and Design': 'Singapore',
+    'Delft University of Technology': 'Netherlands',
+    'National University of Singapore': 'Singapore',
+    'Tampere University': 'Finland',
+    'École Polytechnique Fédérale de Lausanne': 'France',
+    'University College London': 'United Kingdom',
+    'Charles III University of Madrid': 'Spain',
+}
 
 
 def grades(df: pd.DataFrame, box=True, show=True):
@@ -124,7 +134,7 @@ def attendance_vs_grades(df: pd.DataFrame, box=True, show=True):
 
 
 def challenging(df: pd.DataFrame, show=True):
-    return pie_plot(df, 'academics', 'how-challenging', normalize=False, show=show)
+    return pie_plot(df['academics', 'how-challenging'], normalize=False, show=show)
 
 
 def imposter_syndrome(df: pd.DataFrame, show=True):
@@ -142,6 +152,26 @@ def imposter_syndrome(df: pd.DataFrame, show=True):
     return fig
 
 
+def exchange_locations(df: pd.DataFrame, show=True):
+    data = df['exchange', 'school'].str.strip()
+    data = data.replace(EXCHANGE_SCHOOL_COUNTRY)
+    data = data.value_counts().reset_index()
+    data.columns = ['locations', 'count']
+    print(data.head())
+    fig = px.scatter_geo(data,
+        locationmode='country names',
+        locations='locations',
+        size='count',
+        projection='natural earth',
+    )
+    # Resolution needed to show Singapore
+    fig.update_layout(title='Exchange Locations', geo_resolution=50)
+    if show:
+        fig.show()
+    return fig
+    # return pie_plot(data, normalize=False, show=show)
+
+
 if __name__ == "__main__":
     df = load_data()
-    imposter_syndrome(df)
+    exchange_locations(df)

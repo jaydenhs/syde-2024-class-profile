@@ -44,6 +44,7 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
             'grades': academics.grades(df, show=False),
             'how-challenging': academics.challenging(df, show=False),
             'attendance-vs-grades': academics.attendance_vs_grades(df, show=False),
+            'exchange-locations': academics.exchange_locations(df, show=False),
             # 'friends-vs-grades': academics.friends_vs_grades(df, show=False),
         },
         '3-co-op': {
