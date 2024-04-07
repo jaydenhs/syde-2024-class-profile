@@ -30,6 +30,14 @@ uni_sexuality = pd.Series({
     'Prefer not to say': 0.05,
 })
 
+uni_religion = pd.Series({
+    'No religious affiliation': 0.49,
+    'Christianity': 0.24,
+    'Islam': 0.09,
+    'Hinduism': 0.08,
+    'Other': 0.10,
+})
+
 
 def ethnicity(df: pd.DataFrame, show=True, **kwargs):
     ethnicity = get_portions(df['background', 'ethnicity'], **kwargs)
@@ -40,7 +48,7 @@ def ethnicity(df: pd.DataFrame, show=True, **kwargs):
 def gender(df: pd.DataFrame, show=True, **kwargs):
     gender = get_portions(df['background', 'gender'], **kwargs)
     data = pd.concat([gender, uni_gender], axis=1)
-    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], uni_gender, show=show)
+    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], show)
 
 def sexual_orientation(df: pd.DataFrame, show=True, **kwargs):
     sexuality = get_portions(df['background', 'sexual-orientation'], **kwargs)
@@ -61,6 +69,13 @@ def parent_income(df: pd.DataFrame, show=True):
         fig.show()
     return fig
 
+def religion(df: pd.DataFrame, show=True):
+    data = df['life', 'religion'].str.split(',').explode().str.strip()
+    data.replace('Agnostic', 'No religious affiliation', inplace=True)
+    data.replace('Athiesm', 'No religious affiliation', inplace=True)
+    data = data.value_counts(normalize=True) * 100
+    data = pd.concat([data, uni_religion], axis=1)
+    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], show=show)
 
 def international(df: pd.DataFrame, **kwargs):
     return pie_plot(df['background', 'is-international'], **kwargs)
@@ -68,4 +83,4 @@ def international(df: pd.DataFrame, **kwargs):
 
 if __name__ == "__main__":
     df = load_data()
-    sexual_orientation(df)
+    religion(df)

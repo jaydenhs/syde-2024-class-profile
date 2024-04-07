@@ -36,6 +36,7 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
             'parent-education': background.parent_education(df, show=False),
             'sexual-orientation': background.sexual_orientation(df, show=False),
             'parent-income': background.parent_income(df, show=False),
+            'religion': background.religion(df, show=False),
             # 'international': background.international(df, show=False),
         },
         '2-academics': {
@@ -61,7 +62,7 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
         },
         '5-lifestyle': {
             'politics': life.political_leaning(df, show=False),
-            'politics': life.myers_briggs(df, show=False),
+            'myers-briggs': life.myers_briggs(df, show=False),
         },
         '6-future': {
             'kids-by-gender': future.kids_by_gender(df, show=False),

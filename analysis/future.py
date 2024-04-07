@@ -12,13 +12,12 @@ def kids_by_gender(df: pd.DataFrame, show=True):
     data = pd.concat([gender, kids], axis=1)
     return multi_pie_plot(data, 'gender', ['Male', 'Female'], show=show)
 
-
 def marriage_by_gender(df: pd.DataFrame, show=True):
     gender = df['background']['gender']
     marriage = df['future']['marrying']
     data = pd.concat([gender, marriage], axis=1)
     return multi_pie_plot(data, 'gender', ['Male', 'Female'], show=show)
-    
+
 
 def next_year_plans(df: pd.DataFrame, show=True):
     return pie_plot(df['future', 'post-grad-plan'], show=show)
@@ -63,4 +62,4 @@ def salary_vs_location(df: pd.DataFrame, show=True):
 
 if __name__ == "__main__":
     df = load_data()
-    salary_vs_location(df)
+    kids(df)

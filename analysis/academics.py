@@ -166,6 +166,7 @@ def exchange_locations(df: pd.DataFrame, show=True):
     )
     # Resolution needed to show Singapore
     fig.update_layout(title='Exchange Locations', geo_resolution=50)
+    
     if show:
         fig.show()
     return fig

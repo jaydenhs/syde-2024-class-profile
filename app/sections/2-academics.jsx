@@ -42,11 +42,20 @@ export default function Academics() {
         Our lowest class attendance was 44% during 2A, our second fully-online
         term. Attendance did not have a significant effect on grades.
       </Graph>
+      <Graph
+        title="23 of us went on exchange."
+        className="full"
+        src="/graphs/2-academics/exchange-locations.html"
+      >
+        We studied abroad in Eastern Europe and South-east Asia. The most
+        popular universities were the National University of Singapore (6) and
+        Charles III University of Madrid (4).
+      </Graph>
+      {/* <Graph title="" src="/graphs/2-academics/how-challenging.html" /> */}
       <SpotifyEmbed
         title="Songs that remind us of Waterloo"
         playlistId={"3bHSJ5LYdASACOlzO9bc2l"}
       />
-      {/* <Graph title="" src="/graphs/2-academics/how-challenging.html" /> */}
     </Section>
   );
 }
