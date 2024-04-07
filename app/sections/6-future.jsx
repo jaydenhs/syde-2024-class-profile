@@ -18,7 +18,7 @@ export default function Future() {
       </Graph>
       <Graph src="/graphs/6-future/full-time-locations.html"></Graph>
       <Graph
-        title="The median salary of those working in the US is 147% higher than those working in Canada."
+        title="The median salary of those working in the US is 2.47 times higher than those working in Canada."
         src="/graphs/6-future/salary-vs-location.html"
       ></Graph>
       <Graph

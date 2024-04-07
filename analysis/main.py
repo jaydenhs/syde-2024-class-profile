@@ -2,12 +2,12 @@ import os
 from plotly import graph_objects as go
 
 from source import load_data
-import academics
-import coop
-import background
-import syde
-import life
-import future
+import s1_background
+import s2_academics
+import s3_coop
+import s4_syde
+import s5_lifestyle
+import s6_future
 
 
 
@@ -31,45 +31,45 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
     df = load_data()
     fig_dirs = {
         '1-background': {
-            'ethnicity': background.ethnicity(df, show=False),
-            'gender': background.gender(df, show=False),
-            'parent-education': background.parent_education(df, show=False),
-            'sexual-orientation': background.sexual_orientation(df, show=False),
-            'parent-income': background.parent_income(df, show=False),
-            'religion': background.religion(df, show=False),
+            'ethnicity': s1_background.ethnicity(df, show=False),
+            'gender': s1_background.gender(df, show=False),
+            'parent-education': s1_background.parent_education(df, show=False),
+            'sexual-orientation': s1_background.sexual_orientation(df, show=False),
+            'parent-income': s1_background.parent_income(df, show=False),
+            'religion': s1_background.religion(df, show=False),
             # 'international': background.international(df, show=False),
         },
         '2-academics': {
-            'ease-vs-use': academics.ease_vs_use(df, show=False),
-            'attendance': academics.attendance(df, show=False),
-            'grades': academics.grades(df, show=False),
-            'how-challenging': academics.challenging(df, show=False),
-            'attendance-vs-grades': academics.attendance_vs_grades(df, show=False),
-            'exchange-locations': academics.exchange_locations(df, show=False),
+            'ease-vs-use': s2_academics.ease_vs_use(df, show=False),
+            'attendance': s2_academics.attendance(df, show=False),
+            'grades': s2_academics.grades(df, show=False),
+            'how-challenging': s2_academics.challenging(df, show=False),
+            'attendance-vs-grades': s2_academics.attendance_vs_grades(df, show=False),
+            'exchange-locations': s2_academics.exchange_locations(df, show=False),
             # 'friends-vs-grades': academics.friends_vs_grades(df, show=False),
         },
         '3-co-op': {
-            'salary': coop.salary(df, show=False),
-            'brain-drain': coop.braindrain(df, show=False),
-            'grades-vs-salary': coop.grades_vs_salary(df, show=False),
-            'work-model': coop.work_model(df, show=False),
+            'salary': s3_coop.salary(df, show=False),
+            'brain-drain': s3_coop.braindrain(df, show=False),
+            'grades-vs-salary': s3_coop.grades_vs_salary(df, show=False),
+            'work-model': s3_coop.work_model(df, show=False),
             # 'salary-vs-grades': coop.grades_vs_salary(df, show=False),
         },
         '4-syde': {
-            'restart-program': syde.restart_program(df, show=False),
-            'close-friends': syde.close_friends(df, show=False),
-            'transfer-well-integrated': syde.transfer_well_integrated(df, show=False),
+            'restart-program': s4_syde.restart_program(df, show=False),
+            'close-friends': s4_syde.close_friends(df, show=False),
+            'transfer-well-integrated': s4_syde.transfer_well_integrated(df, show=False),
         },
         '5-lifestyle': {
-            'politics': life.political_leaning(df, show=False),
-            'myers-briggs': life.myers_briggs(df, show=False),
+            'politics': s5_lifestyle.political_leaning(df, show=False),
+            'myers-briggs': s5_lifestyle.myers_briggs(df, show=False),
         },
         '6-future': {
-            'kids-by-gender': future.kids_by_gender(df, show=False),
-            'marriage-by-gender': future.marriage_by_gender(df, show=False),
-            'next-year-plans': future.next_year_plans(df, show=False),
-            'salary-vs-location': future.salary_vs_location(df, show=False),
-            'full-time-locations': future.full_time_locations(df, show=False),
+            'kids-by-gender': s6_future.kids_by_gender(df, show=False),
+            'marriage-by-gender': s6_future.marriage_by_gender(df, show=False),
+            'next-year-plans': s6_future.next_year_plans(df, show=False),
+            'salary-vs-location': s6_future.salary_vs_location(df, show=False),
+            'full-time-locations': s6_future.full_time_locations(df, show=False),
         },
     }
 
