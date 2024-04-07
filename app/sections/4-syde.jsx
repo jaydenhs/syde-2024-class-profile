@@ -21,8 +21,8 @@ export default function Syde() {
           "4-syde/restart-program-historical.html",
         ]}
       >
-        This marks the second consecutive year of 67%, reflecting a shift from
-        the higher percentages seen between 2018 and 2021.
+        This marks the second consecutive year of 67%, a decline from the higher
+        percentages seen between 2018 and 2021.
       </Graph>
       <SpotifyEmbed
         title="Our go-to party songs"

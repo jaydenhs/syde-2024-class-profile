@@ -5,7 +5,6 @@ import plotly.express as px
 from source import load_data, search_headers
 from generic import pie_plot, coerce_numeric
 
-
 EASE_SCALE = {
     'Incredibly Difficult': 1,
     'Difficult': 2,
@@ -42,7 +41,9 @@ EXCHANGE_SCHOOL_COUNTRY = {
 
 
 def grades(df: pd.DataFrame, box=True, show=True):
+    # Customizing the term headers
     data = coerce_numeric(df['academics'][search_headers('avg')])
+    data.columns = data.columns.str.replace('avg-', '').str.upper()
     fig = px.box(data) if box else px.line(data.mean(), error_y=data.sem(), markers=True)
     fig.update_layout(title='Average Grades by Term', yaxis=dict(title='Average Grade'), xaxis=dict(title='Term'))
     if show:
@@ -81,6 +82,7 @@ def ease_vs_use(df: pd.DataFrame, show=True):
 
 def attendance(df: pd.DataFrame, show=True):
     data = df['academics'][search_headers('attendance')]
+    data.columns = data.columns.str.replace('attendance-', '').str.upper()
     data = data.applymap(lambda x: PERCENT_MAP.get(x, np.nan))
     fig = px.line(data.mean(), error_y=data.sem(), markers=True)
     fig.update_layout(
