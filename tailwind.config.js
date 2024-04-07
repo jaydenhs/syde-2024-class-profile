@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        '128': '32rem',
-        '144': '36rem',
-      }
+        128: "32rem",
+        144: "36rem",
+      },
     },
   },
   plugins: [],
