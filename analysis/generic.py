@@ -5,7 +5,7 @@ from plotly.subplots import make_subplots
 
 
 def pie_plot(series: pd.Series, show=True, **kwargs):
-    data = get_pie_data(series, **kwargs)
+    data = get_portions(series, **kwargs)
     fig = px.pie(names=data.index, values=data.values, color_discrete_sequence=px.colors.qualitative.Set1)
     fig.update_layout(showlegend=False)
     fig.update_traces(textinfo='percent+label')
@@ -14,7 +14,7 @@ def pie_plot(series: pd.Series, show=True, **kwargs):
     return fig
 
 
-def get_pie_data(series: pd.Series, parse_multi_answer=True, normalize=True):
+def get_portions(series: pd.Series, parse_multi_answer=True, normalize=True):
     data = series.dropna().copy()
     if parse_multi_answer:
         data = data.str.split(',').explode()
@@ -31,6 +31,17 @@ def multi_pie_plot(df: pd.DataFrame, key: str, values: list, show=True):
         portion = df[df[key] == value].value_counts(normalize=True).reset_index()
         portion.columns = [key, 'value', 'proportion']
         fig.add_trace(go.Pie(labels=portion['value'], values=portion['proportion']), row=1, col=i)
+    fig.update_traces(textinfo='percent+label')
+    if show:
+        fig.show()
+    return fig
+
+
+def multi_pie_plot_raw(df: pd.DataFrame, labels=None, show=True):
+    labels = labels or df.columns
+    fig = make_subplots(rows=1, cols=len(df.columns), subplot_titles=labels, specs=[[{"type": "pie"}] * 2])
+    for i, column in enumerate(df.columns, 1):
+        fig.add_trace(go.Pie(labels=df.index, values=df[column]), row=1, col=i)
     fig.update_traces(textinfo='percent+label')
     if show:
         fig.show()

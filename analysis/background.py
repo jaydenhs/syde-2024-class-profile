@@ -1,10 +1,8 @@
 import pandas as pd
 import plotly.express as px
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
 
 from source import load_data
-from generic import pie_plot, get_pie_data
+from generic import pie_plot, get_portions, multi_pie_plot_raw
 
 
 uni_ethnicity = pd.Series({
@@ -25,13 +23,6 @@ uni_gender = pd.Series({
     'Prefer not to say': 0.01,
 })
 
-uni_religion = pd.Series({
-    'None': 0.49,
-    'Christian': 0.24,
-    'Muslim': 0.09,
-    'Hindu': 0.08,
-})
-
 uni_sexuality = pd.Series({
     'Straight/heterosexual': 0.73,
     'Bisexual': 0.11,
@@ -39,27 +30,22 @@ uni_sexuality = pd.Series({
     'Prefer not to say': 0.05,
 })
 
-def comparison_pie_plot(data: pd.Series, uni_data: pd.Series, show=True):
-    fig = make_subplots(rows=1, cols=2, subplot_titles=['SYDE 24', 'UW'], specs=[[{"type": "pie"}] * 2])
-    fig.add_trace(go.Pie(labels=data.index, values=data.values), row=1, col=1)
-    fig.add_trace(go.Pie(labels=uni_data.index, values=uni_data.values), row=1, col=2)
-    fig.update_traces(textinfo='percent+label')
-    if show:
-        fig.show()
-    return fig
 
 def ethnicity(df: pd.DataFrame, show=True, **kwargs):
-    ethnicity = get_pie_data(df['background', 'ethnicity'], **kwargs)
+    ethnicity = get_portions(df['background', 'ethnicity'], **kwargs)
     ethnicity.replace('First Nations', 'Indigenous', inplace=True)
-    return comparison_pie_plot(ethnicity, uni_ethnicity, show=show)
+    data = pd.concat([ethnicity, uni_ethnicity], axis=1)
+    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], show)
 
 def gender(df: pd.DataFrame, show=True, **kwargs):
-    gender = get_pie_data(df['background', 'gender'], **kwargs)
-    return comparison_pie_plot(gender, uni_gender, show=show)
+    gender = get_portions(df['background', 'gender'], **kwargs)
+    data = pd.concat([gender, uni_gender], axis=1)
+    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], uni_gender, show=show)
 
 def sexual_orientation(df: pd.DataFrame, show=True, **kwargs):
-    sexuality = get_pie_data(df['background', 'sexual-orientation'], **kwargs)
-    return comparison_pie_plot(sexuality, uni_sexuality, show=show)
+    sexuality = get_portions(df['background', 'sexual-orientation'], **kwargs)
+    data = pd.concat([sexuality, uni_sexuality], axis=1)
+    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], show)
 
 
 def parent_education(df: pd.DataFrame, **kwargs):
