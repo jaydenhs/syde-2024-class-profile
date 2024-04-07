@@ -157,12 +157,12 @@ def exchange_locations(df: pd.DataFrame, show=True):
     data = data.replace(EXCHANGE_SCHOOL_COUNTRY)
     data = data.value_counts().reset_index()
     data.columns = ['locations', 'count']
-    print(data.head())
     fig = px.scatter_geo(data,
         locationmode='country names',
         locations='locations',
         size='count',
         projection='natural earth',
+        fitbounds='locations',
     )
     # Resolution needed to show Singapore
     fig.update_layout(title='Exchange Locations', geo_resolution=50)
