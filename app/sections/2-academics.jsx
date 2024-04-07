@@ -23,16 +23,16 @@ export default function Academics() {
       </Graph>
       <ImageCollection srcs={[Pic1, Pic2, Pic3]} />
       <Graph
-        title="We found Human Factors in Design (SYDE 162) to be the best balance of easy and useful."
+        title="We found Human Factors in Design (SYDE162) to be the best balance of easy and useful."
         srcArray={["2-academics/ease-vs-use.html"]}
       >
-        We found the programming courses, SYDE 121 and SYDE 223, more useful but
+        We found the programming courses, SYDE121 and SYDE223, more useful but
         more difficult.{" "}
         <Link
           href="https://uwaterloo.ca/academic-calendar/undergraduate-studies/catalog#/programs/SJgggJRRoh"
           target="_blank"
         >
-          View our course program.
+          View our full course program.
         </Link>
       </Graph>
       <Graph

@@ -93,6 +93,16 @@ export default function About() {
             expressed in Canadian dollars, converted at a rate of 1 USD = 1.36
             CAD.
           </p>
+          <p>
+            Data about the University of Waterloo is collected from the{" "}
+            <Link
+              href="https://uwaterloo.ca/equity-diversity-inclusion-anti-racism/equity-survey/equity-survey-results"
+              target="_blank"
+            >
+              2021 UWaterloo Equity Survey
+            </Link>
+            ,
+          </p>
         </div>
         <div className="space-y-2">
           <h3>Contact us</h3>

@@ -177,4 +177,4 @@ def exchange_locations(df: pd.DataFrame, show=True):
 
 if __name__ == "__main__":
     df = load_data()
-    attendance(df)
+    ease_vs_use(df)
