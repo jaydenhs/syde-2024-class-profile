@@ -33,13 +33,17 @@ export default function Background() {
         title="The ethnicities of our class is similar to the university."
         className="full"
         srcArray={["1-background/ethnicity.html"]}
-      />
+      >
+        However, we have no one who identifies Middle Eastern.
+      </Graph>
 
       <Graph
         title="We are less religious than the university."
         className="full"
         srcArray={["1-background/religion.html"]}
-      ></Graph>
+      >
+        Unlike the university, more of us identify with Buddhism than Islam.
+      </Graph>
       <Graph
         title="97% of us have at least one parent with a post-secondary degree."
         srcArray={["1-background/parent-education.html"]}

@@ -43,17 +43,17 @@ def ethnicity(df: pd.DataFrame, show=True, **kwargs):
     ethnicity = get_portions(df['background', 'ethnicity'], **kwargs)
     ethnicity.replace('First Nations', 'Indigenous', inplace=True)
     data = pd.concat([ethnicity, uni_ethnicity], axis=1)
-    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], show)
+    return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show)
 
 def gender(df: pd.DataFrame, show=True, **kwargs):
     gender = get_portions(df['background', 'gender'], **kwargs)
     data = pd.concat([gender, uni_gender], axis=1)
-    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], show)
+    return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show)
 
 def sexual_orientation(df: pd.DataFrame, show=True, **kwargs):
     sexuality = get_portions(df['background', 'sexual-orientation'], **kwargs)
     data = pd.concat([sexuality, uni_sexuality], axis=1)
-    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], show)
+    return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show)
 
 
 def parent_education(df: pd.DataFrame, **kwargs):
@@ -75,7 +75,7 @@ def religion(df: pd.DataFrame, show=True):
     data.replace('Athiesm', 'No religious affiliation', inplace=True)
     data = data.value_counts(normalize=True) * 100
     data = pd.concat([data, uni_religion], axis=1)
-    return multi_pie_plot_raw(data, ['SYDE 24', 'UW'], show=show)
+    return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show=show)
 
 def international(df: pd.DataFrame, **kwargs):
     return pie_plot(df['background', 'is-international'], **kwargs)
@@ -83,4 +83,4 @@ def international(df: pd.DataFrame, **kwargs):
 
 if __name__ == "__main__":
     df = load_data()
-    religion(df)
+    parent_education(df)
