@@ -24,7 +24,7 @@ export default function Academics() {
       <ImageCollection srcs={[Pic1, Pic2, Pic3]} />
       <Graph
         title="We found Human Factors in Design (SYDE 162) to be the best balance of easy and useful."
-        src="/graphs/2-academics/ease_vs_use.html"
+        src="/graphs/2-academics/ease-vs-use.html"
       >
         We found the programming courses, SYDE 121 and SYDE 223, more useful but
         more difficult.{" "}
@@ -40,12 +40,13 @@ export default function Academics() {
         src="/graphs/2-academics/attendance.html"
       >
         Our lowest class attendance was 44% during 2A, our second fully-online
-        term.
+        term. Attendance did not have a significant effect on grades.
       </Graph>
       <SpotifyEmbed
         title="Songs that remind us of Waterloo"
         playlistId={"3bHSJ5LYdASACOlzO9bc2l"}
       />
+      {/* <Graph title="" src="/graphs/2-academics/how-challenging.html" /> */}
     </Section>
   );
 }

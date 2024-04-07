@@ -14,9 +14,16 @@ export default function Background() {
     >
       <h2>BACKGROUND</h2>
       <Graph src="/graphs/1-background/ethnicity.html" />
-      <Graph src="/graphs/1-background/gender.html" />
-      <Graph src="/graphs/1-background/parent_education.html" />
-      <Graph src="/graphs/1-background/sexual_orientation.html" />
+      <Graph
+        title="We have an equal proportion of males and females."
+        src="/graphs/1-background/gender.html"
+      />
+      <Graph
+        title="97% of us have at least one parent with a post-secondary degree."
+        src="/graphs/1-background/parent-education.html"
+      />
+      <Graph src="/graphs/1-background/parent-income.html" />
+      <Graph src="/graphs/1-background/sexual-orientation.html" />
       <SpotifyEmbed
         title="Our top songs of 2023"
         playlistId={"3tiseqtV4xRZMu82daC1bk"}

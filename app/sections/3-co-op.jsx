@@ -16,6 +16,14 @@ export default function Coop() {
         Salary differences within the class have widened, with the range between
         low and high salaries increasing from $7/hr to $26/hr.
       </Graph>
+      {/* <Graph src="/graphs/3-co-op/brain-drain.html" /> */}
+      {/* <Graph src="/graphs/3-co-op/grades-vs-salary.html" /> */}
+      <Graph
+        title="The fully in-person working model has fallen from 85% to 32%."
+        src="/graphs/3-co-op/work-model.html"
+      >
+        The hybrid working model is now the most prevalent, at 48%.
+      </Graph>
     </Section>
   );
 }
