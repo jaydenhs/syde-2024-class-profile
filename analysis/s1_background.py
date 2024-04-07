@@ -45,10 +45,9 @@ def ethnicity(df: pd.DataFrame, show=True, **kwargs):
     data = pd.concat([ethnicity, uni_ethnicity], axis=1)
     return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show)
 
+# UWaterloo gender pie plot wasn't insightful
 def gender(df: pd.DataFrame, show=True, **kwargs):
-    gender = get_portions(df['background', 'gender'], **kwargs)
-    data = pd.concat([gender, uni_gender], axis=1)
-    return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show)
+    return pie_plot(df['background', 'gender'], show=show, **kwargs)
 
 def sexual_orientation(df: pd.DataFrame, show=True, **kwargs):
     sexuality = get_portions(df['background', 'sexual-orientation'], **kwargs)
@@ -83,4 +82,4 @@ def international(df: pd.DataFrame, **kwargs):
 
 if __name__ == "__main__":
     df = load_data()
-    parent_education(df)
+    sexual_orientation(df)
