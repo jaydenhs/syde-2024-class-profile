@@ -175,4 +175,4 @@ def exchange_locations(df: pd.DataFrame, show=True):
 
 if __name__ == "__main__":
     df = load_data()
-    exchange_locations(df)
+    attendance(df)

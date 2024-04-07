@@ -10,10 +10,10 @@ export default function Lifestyle() {
   return (
     <Section bgColor="bg-pink-100" className="section-layout" id="Lifestyle">
       <h2>LIFESTYLE</h2>
-      <Graph src="/graphs/5-lifestyle/politics.html"></Graph>
+      <Graph srcArray={["5-lifestyle/politics.html"]}></Graph>
       <Graph
         title="We have an even split of extroverts and introverts, according to the Myers-Briggs Type Indicator."
-        src="/graphs/5-lifestyle/myers-briggs.html"
+        srcArray={["5-lifestyle/myers-briggs.html"]}
       >
         The most common types were{" "}
         <Link

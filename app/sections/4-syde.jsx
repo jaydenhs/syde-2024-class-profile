@@ -11,15 +11,18 @@ export default function Syde() {
       <h2>SYDE</h2>
       <Graph
         title="59% of us had five or more close friends in SYDE."
-        src="/graphs/4-syde/close-friends.html"
+        srcArray={["4-syde/close-friends.html"]}
       ></Graph>
       <Graph
+        className="full"
         title="67% of us would've chosen SYDE if we could start university again."
-        src="/graphs/4-syde/restart-program.html"
+        srcArray={[
+          "4-syde/restart-program.html",
+          "4-syde/restart-program-historical.html",
+        ]}
       >
-        16% of us would've chosen a different engineering program, and 9%
-        of us would've chosen Computer Science.
-        {/* Compare with past profiles? 2021 was 86.7% SYDE, 2023 was 67% SYDE - decreasing trend of SYDE confidence? */}
+        This marks the second consecutive year of 67%, reflecting a shift from
+        the higher percentages seen between 2018 and 2021.
       </Graph>
       <SpotifyEmbed
         title="Our go-to party songs"

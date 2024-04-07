@@ -57,6 +57,7 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
         },
         '4-syde': {
             'restart-program': s4_syde.restart_program(df, show=False),
+            'restart-program-historical': s4_syde.restart_program_historical(df, show=False),
             'close-friends': s4_syde.close_friends(df, show=False),
             'transfer-well-integrated': s4_syde.transfer_well_integrated(df, show=False),
         },

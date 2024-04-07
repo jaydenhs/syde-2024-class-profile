@@ -11,25 +11,25 @@ export default function Future() {
       <h2>FUTURE</h2>
       <Graph
         title="Most of us are planning to work full-time after graduation."
-        src="/graphs/6-future/next-year-plans.html"
+        srcArray={["6-future/next-year-plans.html"]}
       >
         Of those planning on pursuing graduate studies, all are focused on
         engineering or computer science.
       </Graph>
-      <Graph src="/graphs/6-future/full-time-locations.html"></Graph>
+      <Graph srcArray={["6-future/full-time-locations.html"]}></Graph>
       <Graph
         title="The median salary of those working in the US is 2.47 times higher than those working in Canada."
-        src="/graphs/6-future/salary-vs-location.html"
+        srcArray={["6-future/salary-vs-location.html"]}
       ></Graph>
       <Graph
         title="Most of us want to get married, several in the next year."
         className="full"
-        src="/graphs/6-future/marriage-by-gender.html"
+        srcArray={["6-future/marriage-by-gender.html"]}
       ></Graph>
       <Graph
         title="Most of us want kids, but men want kids sooner."
         className="full"
-        src="/graphs/6-future/kids-by-gender.html"
+        srcArray={["6-future/kids-by-gender.html"]}
       ></Graph>
     </Section>
   );

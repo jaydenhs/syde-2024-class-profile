@@ -16,7 +16,7 @@ export default function Academics() {
       <h2>ACADEMICS</h2>
       <Graph
         title="Our grades were the highest in 4A, when we had the most choice over the courses we took."
-        src="/graphs/2-academics/grades.html"
+        srcArray={["2-academics/grades.html"]}
       >
         As expected, our median grade inflated by 8% during COVID (1B-2B) and
         fell by 10% when we returned in-person.
@@ -24,7 +24,7 @@ export default function Academics() {
       <ImageCollection srcs={[Pic1, Pic2, Pic3]} />
       <Graph
         title="We found Human Factors in Design (SYDE 162) to be the best balance of easy and useful."
-        src="/graphs/2-academics/ease-vs-use.html"
+        srcArray={["2-academics/ease-vs-use.html"]}
       >
         We found the programming courses, SYDE 121 and SYDE 223, more useful but
         more difficult.{" "}
@@ -37,7 +37,7 @@ export default function Academics() {
       </Graph>
       <Graph
         title="Class attendance has decreased by 23% since first term, from 74% to 51%."
-        src="/graphs/2-academics/attendance.html"
+        srcArray={["2-academics/attendance.html"]}
       >
         Our lowest class attendance was 44% during 2A, our second fully-online
         term. Attendance did not have a significant effect on grades.
@@ -45,13 +45,13 @@ export default function Academics() {
       <Graph
         title="23 of us went on exchange."
         className="full"
-        src="/graphs/2-academics/exchange-locations.html"
+        srcArray={["2-academics/exchange-locations.html"]}
       >
         We studied abroad in Eastern Europe and South-east Asia. The most
         popular universities were the National University of Singapore (6) and
         Charles III University of Madrid (4).
       </Graph>
-      {/* <Graph title="" src="/graphs/2-academics/how-challenging.html" /> */}
+      {/* <Graph title="" srcArray={["2-academics/how-challenging.html"]} /> */}
       <SpotifyEmbed
         title="Songs that remind us of Waterloo"
         playlistId={"3bHSJ5LYdASACOlzO9bc2l"}
