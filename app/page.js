@@ -9,6 +9,7 @@ import Coop from "@sections/3-co-op";
 import Syde from "@sections/4-syde";
 import Lifestyle from "@sections/5-lifestyle";
 import Future from "@sections/6-future";
+import Footer from "@sections/7-footer";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         <Syde />
         <Lifestyle />
         <Future />
+        <Footer />
       </main>
       <Nav />
     </>
