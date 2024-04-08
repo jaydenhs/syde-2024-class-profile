@@ -25,12 +25,12 @@ export default function Footer() {
           best and can't wait to see what you accomplish in the world!
         </p>
       </div>
-      <ImageBlob
-        src={classPic1}
-        className={
-          "full scale-150 mt-16 mb-12 md:my-0 md:scale-100 object-cover"
-        }
-      />
+      <div className="full overflow-x-hidden overflow-y-hidden">
+        <ImageBlob
+          src={classPic1}
+          className={"scale-150 mt-16 mb-16 md:my-0 md:scale-100 object-cover"}
+        />
+      </div>
     </Section>
   );
 }
