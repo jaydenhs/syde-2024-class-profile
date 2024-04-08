@@ -42,7 +42,7 @@ def get_section_header_map():
 def get_edgy_headers():
     return  [
         'timestamp', 'sydecest', 'crush', 'longest-relation', 'relation-status', 'relation-forever', 
-        'courses-failed', 'lost-viriginity', 'cry-spot', 'mental-health', 'mental-health-issues', 'counselling',
+        'courses-failed', 'lost-virginity', 'cry-spot', 'mental-health', 'mental-health-issues', 'counselling',
         'sex-partners', 'num-relations', 'drugs', 'cheated-in-person', 'cheated-online', 'cheated-caught',
     ]
 

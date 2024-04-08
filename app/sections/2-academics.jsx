@@ -23,7 +23,7 @@ export default function Academics() {
       <h2>ACADEMICS</h2>
       <Graph
         title="Our grades were the highest in 4A, when we had the most choice over the courses we took."
-        srcArray={["2-academics/grades.html"]}
+        srcs={["2-academics/grades.html"]}
       >
         As expected, our median grade inflated by 8% during COVID (1B-2B) and
         fell by 10% when we returned in-person.
@@ -31,7 +31,7 @@ export default function Academics() {
       <ImageCollection srcs={[IMG_1994, IMG_9301, IMG_3855]} />
       <Graph
         title="We found Human Factors in Design (SYDE162) to be the best balance of easy and useful."
-        srcArray={["2-academics/ease-vs-use.html"]}
+        srcs={["2-academics/ease-vs-use.html"]}
       >
         We found the programming courses, SYDE121 and SYDE223, more useful but
         more difficult.{" "}
@@ -45,7 +45,7 @@ export default function Academics() {
       <ImageCollection srcs={[IMG_6666, IMG_2022, IMG_7953]} />
       <Graph
         title="Class attendance has decreased by 23% since first term, from 74% to 51%."
-        srcArray={["2-academics/attendance.html"]}
+        srcs={["2-academics/attendance.html"]}
       >
         Our lowest class attendance was 44% during 2A, our second fully-online
         term. Attendance did not have a significant effect on grades.
@@ -55,13 +55,13 @@ export default function Academics() {
       <Graph
         title="23 of us went on exchange."
         className="full"
-        srcArray={["2-academics/exchange-locations.html"]}
+        srcs={["2-academics/exchange-locations.html"]}
       >
         We studied abroad in Eastern Europe and South-east Asia. The most
         popular universities were the National University of Singapore (6) and
         Charles III University of Madrid (4).
       </Graph>
-      {/* <Graph title="" srcArray={["2-academics/how-challenging.html"]} /> */}
+      {/* <Graph title="" srcs={["2-academics/how-challenging.html"]} /> */}
       <SpotifyEmbed
         title="Songs that remind us of Waterloo"
         playlistId={"3bHSJ5LYdASACOlzO9bc2l"}

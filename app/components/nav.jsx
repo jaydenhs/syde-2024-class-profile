@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import HelpIcon from "@icons/help.svg";
+import InfoIcon from "@icons/info.svg";
 
 const sections = [
   { id: 0, text: "Home", color: "bg-gray-500" },
@@ -39,7 +39,7 @@ export default function Nav() {
       >
         <Image
           className="opacity-50 group-hover:opacity-100 group-hover:scale-110 transition-transform"
-          src={HelpIcon}
+          src={InfoIcon}
         />
         <p className="hidden 2xl:inline group-hover/nav:inline">About</p>
       </Link>

@@ -1,7 +1,7 @@
 import pandas as pd
 import plotly.express as px
 
-from source import load_data
+from source import load_data, load_edgy_data
 from generic import pie_plot
 
 def restart_program(df: pd.DataFrame, **kwargs):
@@ -26,6 +26,15 @@ def restart_program_historical(df: pd.DataFrame, show=True):
     
     return fig
 
+def crush(df: pd.DataFrame, **kwargs):
+    return pie_plot(df['crush'], parse_multi_answer=False, **kwargs)
+
+def sydecest(df: pd.DataFrame, **kwargs):
+    return pie_plot(df['sydecest'], **kwargs)
+
 if __name__ == "__main__":
     df = load_data()
     restart_program_historical(df)
+
+    df_edgy = load_edgy_data()
+    crush(df_edgy)

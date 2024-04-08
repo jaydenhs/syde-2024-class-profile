@@ -1,7 +1,7 @@
 import os
 from plotly import graph_objects as go
 
-from source import load_data
+from source import load_data, load_edgy_data
 import s1_background
 import s2_academics
 import s3_coop
@@ -29,6 +29,7 @@ def style_figure(fig: go.Figure):
 
 def generate_plots(save_dir=None, replace=False, show=False, section=None):
     df = load_data()
+    df_edgy = load_edgy_data()
     fig_dirs = {
         '1-background': {
             'ethnicity': s1_background.ethnicity(df, show=False),
@@ -60,10 +61,18 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
             'restart-program-historical': s4_syde.restart_program_historical(df, show=False),
             'close-friends': s4_syde.close_friends(df, show=False),
             'transfer-well-integrated': s4_syde.transfer_well_integrated(df, show=False),
+            'crush': s4_syde.crush(df_edgy, show=False),
+            'sydecest': s4_syde.sydecest(df_edgy, show=False),
         },
         '5-lifestyle': {
             'politics': s5_lifestyle.political_leaning(df, show=False),
             'myers-briggs': s5_lifestyle.myers_briggs(df, show=False),
+            'relation-status': s5_lifestyle.relation_status(df_edgy, show=False),
+            'relation-forever': s5_lifestyle.relation_forever(df_edgy, show=False),
+            'lost-virginity': s5_lifestyle.lost_virginity(df_edgy, show=False),
+            'sex-partners': s5_lifestyle.sex_partners(df_edgy, show=False),
+            'num-relations': s5_lifestyle.num_relations(df_edgy, show=False)
+
         },
         '6-future': {
             'kids-by-gender': s6_future.kids_by_gender(df, show=False),

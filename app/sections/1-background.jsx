@@ -26,13 +26,13 @@ export default function Background() {
       <h2>BACKGROUND</h2>
       <Graph
         title="We have an equal proportion of males and females."
-        srcArray={["1-background/gender.html"]}
+        srcs={["1-background/gender.html"]}
       />
       <ImageCollection srcs={[IMG_6535, IMG_6543, IMG_2839]} />
       <Graph
         title="The ethnicities of our class is similar to the university."
         className="full"
-        srcArray={["1-background/ethnicity.html"]}
+        srcs={["1-background/ethnicity.html"]}
       >
         However, we have no one who identifies Middle Eastern.
       </Graph>
@@ -40,24 +40,24 @@ export default function Background() {
       <Graph
         title="We are less religious than the university."
         className="full"
-        srcArray={["1-background/religion.html"]}
+        srcs={["1-background/religion.html"]}
       >
         Unlike the university, more of us identify with Buddhism than Islam.
       </Graph>
       <Graph
         title="97% of us have at least one parent with a post-secondary degree."
-        srcArray={["1-background/parent-education.html"]}
+        srcs={["1-background/parent-education.html"]}
       />
       <ImageCollection srcs={[IMG_0087, IMG_1081, IMG_1122]} />
       <Graph
         title="Combined parental income"
-        srcArray={["1-background/parent-income.html"]}
+        srcs={["1-background/parent-income.html"]}
       />
       <ImageCollection srcs={[IMG_2786, IMG_6394, IMG_2345]} />
       <Graph
         title="The sexual orientations of our class is similar to the university."
         className="full"
-        srcArray={["1-background/sexual-orientation.html"]}
+        srcs={["1-background/sexual-orientation.html"]}
       />
       <SpotifyEmbed
         title="Our top songs of 2023"
