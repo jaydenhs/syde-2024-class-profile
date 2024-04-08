@@ -2,15 +2,22 @@ import React from "react";
 
 import Section from "@components/section";
 import Graph from "@components/graph";
-import ImageBlob from "@components/image-blob";
+import ImageCollection from "@components/image-collection";
 import SpotifyEmbed from "@components/music/spotify-embed";
 import Link from "next/link";
+
+import IMG_0791 from "@images/5-lifestyle/IMG_0791.jpeg";
+import IMG_1768 from "@images/5-lifestyle/IMG_1768.jpeg";
+import IMG_7373 from "@images/5-lifestyle/IMG_7373.jpg";
+import IMG_7787 from "@images/5-lifestyle/IMG_7787.jpg";
+import IMG_8640 from "@images/5-lifestyle/IMG_8640.jpeg";
+import IMG_9404 from "@images/5-lifestyle/IMG_9404.jpg";
 
 export default function Lifestyle() {
   return (
     <Section bgColor="bg-pink-100" className="section-layout" id="Lifestyle">
       <h2>LIFESTYLE</h2>
-      <Graph srcs={["5-lifestyle/politics.html"]}></Graph>
+      {/* <Graph srcs={["5-lifestyle/politics.html"]}></Graph> */}
       <Graph
         title="We have an even split of extroverts and introverts."
         srcs={["5-lifestyle/myers-briggs.html"]}
@@ -38,6 +45,8 @@ export default function Lifestyle() {
         </Link>
         .
       </Graph>
+      <ImageCollection srcs={[IMG_0791, IMG_7373, IMG_8640]} />
+
       <Graph
         title="60% of the class is currently in a relationship."
         className="full"
@@ -56,6 +65,8 @@ export default function Lifestyle() {
         title="Most of us had 1 or 2 committed relationships in university."
         srcs={["5-lifestyle/num-relations.html"]}
       ></Graph>
+      <ImageCollection srcs={[IMG_7787, IMG_9404, IMG_1768]} />
+
       <Graph
         title="42% of us had sex for the first time in university."
         className="full"

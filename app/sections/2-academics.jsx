@@ -16,6 +16,8 @@ import IMG_2022 from "@images/2-academics/IMG_2022.jpeg";
 import IMG_3912 from "@images/2-academics/IMG_3912.jpg";
 import IMG_7777 from "@images/2-academics/IMG_7777.jpeg";
 import IMG_9351 from "@images/2-academics/IMG_9351.jpg";
+import IMG_3699 from "@images/2-academics/IMG_3699.jpeg";
+import IMG_0307 from "@images/2-academics/IMG_0307.jpg";
 
 export default function Academics() {
   return (
@@ -28,7 +30,7 @@ export default function Academics() {
         As expected, our median grade inflated by 8% during COVID (1B-2B) and
         fell by 10% when we returned in-person.
       </Graph>
-      <ImageCollection srcs={[IMG_1994, IMG_9301, IMG_3855]} />
+      <ImageCollection srcs={[IMG_1994, IMG_9301, IMG_0307]} />
       <Graph
         title="We found Human Factors in Design (SYDE162) to be the best balance of easy and useful."
         srcs={["2-academics/ease-vs-use.html"]}
@@ -42,7 +44,7 @@ export default function Academics() {
           View our full course program.
         </Link>
       </Graph>
-      <ImageCollection srcs={[IMG_6666, IMG_2022, IMG_7953]} />
+      <ImageCollection srcs={[IMG_6666, IMG_2022, IMG_3699]} />
       <Graph
         title="Class attendance has decreased by 23% since first term, from 74% to 51%."
         srcs={["2-academics/attendance.html"]}

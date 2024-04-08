@@ -2,8 +2,11 @@ import React from "react";
 
 import Section from "@components/section";
 import Graph from "@components/graph";
-import ImageBlob from "@components/image-blob";
-import SpotifyEmbed from "@components/music/spotify-embed";
+import ImageCollection from "@components/image-collection";
+
+import IMG_1698 from "@images/6-future/IMG_1698.jpeg";
+import IMG_6543 from "@images/6-future/IMG_6543.jpeg";
+import IMG_7554 from "@images/6-future/IMG_7554.jpeg";
 
 export default function Future() {
   return (
@@ -16,7 +19,10 @@ export default function Future() {
         Of those planning on pursuing graduate studies, all are focused on
         engineering or computer science.
       </Graph>
-      <Graph srcs={["6-future/full-time-locations.html"]}></Graph>
+      <ImageCollection srcs={[IMG_1698, IMG_6543, IMG_7554]} />
+
+      {/* Make a stacked bar chart to show proportions compared to previous cohorts */}
+      {/* <Graph srcs={["6-future/full-time-locations.html"]}></Graph> */}
       <Graph
         title="The median salary of those working in the US is 2.47 times higher than those working in Canada."
         srcs={["6-future/salary-vs-location.html"]}

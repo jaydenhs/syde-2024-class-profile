@@ -27,6 +27,7 @@ export default function Background() {
       <Graph
         title="We have an equal proportion of males and females."
         srcs={["1-background/gender.html"]}
+        questions={["What gender do you identify with?"]}
       />
       <ImageCollection srcs={[IMG_6535, IMG_6543, IMG_2839]} />
       <Graph
