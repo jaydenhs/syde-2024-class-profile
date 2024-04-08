@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 
 from source import load_data, search_headers
-from generic import coerce_numeric
+from generic import coerce_numeric, stack_bar_plot
 
 pay_term_mapping = {
     'pay-1a': '1A',
@@ -46,15 +46,12 @@ def grades_vs_salary(df: pd.DataFrame, show=True):
 
 def work_model(df: pd.DataFrame, show=True):
     data = df[search_headers('model', 'coop')]['coop']
-    data.columns = data.columns.str.replace('model-', '').str.upper()
+    return stack_bar_plot(data, show=show)
 
-    data = data.melt(var_name='term', value_name='coop-model')
-    data = data.groupby('term')['coop-model'].value_counts(normalize=True).reset_index(name='count')
-    fig = px.bar(data, x='term', y='count', color='coop-model', barmode='stack')
-    fig.update_layout(title='Remote Work Distribution', xaxis_title='Term', yaxis_title='Work Model %')
-    if show:
-        fig.show()
-    return fig
+
+def title(df: pd.DataFrame, show=True):
+    data = df[search_headers('title', 'coop')]['coop']
+    return stack_bar_plot(data, show=show)
 
 
 if __name__ == "__main__":
