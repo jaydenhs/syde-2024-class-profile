@@ -54,6 +54,7 @@ def salary_vs_location(df: pd.DataFrame, show=True):
     data.dropna(inplace=True)
     data = data[data['loc-ft'] != 'Undetermined']
     fig = px.box(data, x='loc-ft', y='pay-ft')
+    fig.update_layout(xaxis_title='Full-time Job Location', yaxis_title='Salary ($CAD)')
     if show:
         fig.show()
     return fig
@@ -62,4 +63,4 @@ def salary_vs_location(df: pd.DataFrame, show=True):
 
 if __name__ == "__main__":
     df = load_data()
-    kids(df)
+    salary_vs_location(df)

@@ -7,6 +7,9 @@ import ImageCollection from "@components/image-collection";
 import IMG_1698 from "@images/6-future/IMG_1698.jpeg";
 import IMG_6543 from "@images/6-future/IMG_6543.jpeg";
 import IMG_7554 from "@images/6-future/IMG_7554.jpeg";
+import IMG_0125 from "@images/6-future/IMG_0125.jpg";
+import IMG_2024 from "@images/6-future/IMG_2024.jpeg";
+import IMG_8393 from "@images/6-future/IMG_8393.jpg";
 
 export default function Future() {
   return (
@@ -22,11 +25,19 @@ export default function Future() {
       <ImageCollection srcs={[IMG_1698, IMG_6543, IMG_7554]} />
 
       {/* Make a stacked bar chart to show proportions compared to previous cohorts */}
-      {/* <Graph srcs={["6-future/full-time-locations.html"]}></Graph> */}
+      <Graph
+        title="Only 28% of us are planning on working in the US."
+        srcs={["6-future/full-time-locations.html"]}
+      ></Graph>
       <Graph
         title="The median salary of those working in the US is 2.47 times higher than those working in Canada."
         srcs={["6-future/salary-vs-location.html"]}
-      ></Graph>
+      >
+        The median salary for jobs based in Canada is $110,000, while for those
+        based in the US, it's $272,000.
+      </Graph>
+      <ImageCollection srcs={[IMG_0125, IMG_2024, IMG_8393]} />
+
       <Graph
         title="Most of us want to get married, several in the next year."
         className="full"

@@ -50,11 +50,12 @@ export default function Background() {
         srcs={["1-background/parent-education.html"]}
       />
       <ImageCollection srcs={[IMG_0087, IMG_1081, IMG_1122]} />
-      <Graph
+      {/* Comment for now, x-axis is unordered */}
+      {/* <Graph
         title="Combined parental income"
         srcs={["1-background/parent-income.html"]}
       />
-      <ImageCollection srcs={[IMG_2786, IMG_6394, IMG_2345]} />
+      <ImageCollection srcs={[IMG_2786, IMG_6394, IMG_2345]} /> */}
       <Graph
         title="The sexual orientations of our class is similar to the university."
         className="full"
