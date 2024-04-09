@@ -67,12 +67,12 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
         '5-lifestyle': {
             'politics': s5_lifestyle.political_leaning(df, show=False),
             'myers-briggs': s5_lifestyle.myers_briggs(df, show=False),
+            'fav-restaurant': s5_lifestyle.kw_restaurants(df, show=False),
             'relation-status': s5_lifestyle.relation_status(df_edgy, show=False),
             'relation-forever': s5_lifestyle.relation_forever(df_edgy, show=False),
             'lost-virginity': s5_lifestyle.lost_virginity(df_edgy, show=False),
             'sex-partners': s5_lifestyle.sex_partners(df_edgy, show=False),
-            'num-relations': s5_lifestyle.num_relations(df_edgy, show=False)
-
+            'num-relations': s5_lifestyle.num_relations(df_edgy, show=False),
         },
         '6-future': {
             'kids-by-gender': s6_future.kids_by_gender(df, show=False),
@@ -105,5 +105,5 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
 
 
 if __name__ == "__main__":
-    generate_plots('public/graphs/', replace=True)
-    # generate_plots(show=True)
+    generate_plots('public/graphs/', replace=True, section='lifestyle')
+    # generate_plots(show=True, section='future')
