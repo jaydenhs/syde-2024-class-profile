@@ -75,10 +75,9 @@ def parent_education(df: pd.DataFrame, **kwargs):
 
 def parent_income(df: pd.DataFrame, show=True):
     data = df['background', 'parent-income'].dropna().value_counts(normalize=True) * 100
-    data.drop("Don't know", inplace=True)
+    data = data[['$50 - 100K', '$100 - 150K', '$150 - 200K', '$200 - 250K', '$250 - 300K', '$300K+']]
     fig = px.bar(x=data.index, y=data.values)
-    # TODO: Not sorted properly
-    fig.update_layout(title='Parental Income ', xaxis_title='Income Range', yaxis_title='% of Students')
+    fig.update_layout(title='Parental Income', xaxis_title='Income Range', yaxis_title='% of Students')
     if show:
         fig.show()
     return fig
@@ -95,4 +94,4 @@ def international(df: pd.DataFrame, **kwargs):
 
 if __name__ == "__main__":
     df = load_data()
-    ethnicity(df)
+    parent_income(df)
