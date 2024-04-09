@@ -15,16 +15,18 @@ def pie_plot(series: pd.Series, show=True, parse_multi_answer=True, **kwargs):
 
 
 
-def get_portions(series: pd.Series, parse_multi_answer=True, normalize=True, count=None, replace=None):
+def get_portions(series: pd.Series, parse_multi_answer=True, normalize=True, use_og_count=True, replace=None):
     data = series.dropna().copy()
+    count = len(data)
     if parse_multi_answer:
         data = data.str.split(',').explode()
         data = data.str.strip()
+    if not use_og_count:
+        count = len(data)
     if replace:
         data.replace(replace, inplace=True)
     data = data.value_counts()
     if normalize:
-        count = count or data.sum()
         data /= count
         data *= 100
     return data

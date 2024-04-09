@@ -95,4 +95,4 @@ def international(df: pd.DataFrame, **kwargs):
 
 if __name__ == "__main__":
     df = load_data()
-    religion(df)
+    ethnicity(df)
