@@ -30,6 +30,7 @@ export default function Footer() {
         <ImageBlob
           src={classPic1}
           className={"scale-150 mt-16 mb-16 md:my-0 md:scale-100 object-cover"}
+          quality={75}
         />
       </div>
       <ContactUs className="full px-4 md:px-0" />

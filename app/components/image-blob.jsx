@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function ImageBlob({ src, className, style }) {
+export default function ImageBlob({ src, className, style, quality = 1 }) {
   const min = 70;
   const max = 30;
 
@@ -24,6 +24,7 @@ export default function ImageBlob({ src, className, style }) {
       className={`opacity-80 saturate-0 hover:opacity-100 hover:saturate-100 transition-all duration-300 ${className}`}
       placeholder="blur"
       style={mergedStyle}
+      quality={quality}
     />
   );
 }

@@ -45,6 +45,7 @@ export default function Hero() {
             className={
               "scale-150 mt-16 mb-12 md:my-0 md:scale-100 object-cover"
             }
+            quality={75}
           />
         </div>
         <Link
