@@ -3,20 +3,29 @@ import plotly.express as px
 import plotly.figure_factory as ff
 
 from source import load_data
-from generic import multi_pie_plot, pie_plot
+from generic import pie_plot, get_colour_map
 
 
-def kids_by_gender(df: pd.DataFrame, show=True):
-    gender = df['background']['gender']
-    kids = df['future']['kids']
-    data = pd.concat([gender, kids], axis=1)
-    return multi_pie_plot(data, 'gender', ['Male', 'Female'], show=show)
+def _future_gender_plot(df: pd.DataFrame, key, gender: str, show=True):
+    gender_s = df['background']['gender']
+    kids = df['future'][key]
+    data = pd.concat([gender_s, kids], axis=1)
+    colors = get_colour_map(kids.value_counts())
+    data = data[data['gender'] == gender]
+    return pie_plot(data[key], colors=colors, show=show)
 
-def marriage_by_gender(df: pd.DataFrame, show=True):
-    gender = df['background']['gender']
-    marriage = df['future']['marrying']
-    data = pd.concat([gender, marriage], axis=1)
-    return multi_pie_plot(data, 'gender', ['Male', 'Female'], show=show)
+def kids_male(df: pd.DataFrame, show=True):
+    return _future_gender_plot(df, 'kids', 'Male', show=show)
+
+def kids_female(df: pd.DataFrame, show=True):
+    return _future_gender_plot(df, 'kids','Female', show=show)
+
+
+def marriage_male(df: pd.DataFrame, show=True):
+    return _future_gender_plot(df, 'marrying', 'Male', show=show)
+
+def marriage_female(df: pd.DataFrame, show=True):
+    return _future_gender_plot(df, 'marrying', 'Female', show=show)
 
 
 def next_year_plans(df: pd.DataFrame, show=True):
@@ -63,4 +72,5 @@ def salary_vs_location(df: pd.DataFrame, show=True):
 
 if __name__ == "__main__":
     df = load_data()
-    salary_vs_location(df)
+    marriage_male(df)
+    marriage_female(df)

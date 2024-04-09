@@ -4,9 +4,9 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-def pie_plot(series: pd.Series, show=True, **kwargs):
-    data = get_portions(series, **kwargs)
-    fig = px.pie(names=data.index, values=data.values, hole=0.5) 
+def pie_plot(series: pd.Series, show=True, colors=None, is_portion=False, **kwargs):
+    data = get_portions(series, **kwargs) if not is_portion else series
+    fig = px.pie(names=data.index, values=data.values, hole=0.5, color=data.index, color_discrete_map=colors)
     fig.update_layout(showlegend=False)
     fig.update_traces(textinfo='percent+label')
     if show:
@@ -32,31 +32,6 @@ def get_portions(series: pd.Series, parse_multi_answer=True, normalize=True, use
     return data
 
 
-def multi_pie_plot(df: pd.DataFrame, key: str, values: list, show=True):
-    fig = make_subplots(rows=1, cols=len(values), subplot_titles=values, specs=[[{"type": "pie"}] * len(values)])
-    for i, value in enumerate(values, 1):
-        portion = df[df[key] == value].value_counts(normalize=True).reset_index()
-        portion.columns = [key, 'value', 'proportion']
-        fig.add_trace(go.Pie(labels=portion['value'], values=portion['proportion'], hole=0.5), row=1, col=i)
-    fig.update_layout(showlegend=False)
-    fig.update_traces(textinfo='percent+label')
-    if show:
-        fig.show()
-    return fig
-
-
-def multi_pie_plot_raw(df: pd.DataFrame, labels=None, show=True):
-    labels = labels or df.columns
-    fig = make_subplots(rows=1, cols=len(df.columns), subplot_titles=labels, specs=[[{"type": "pie"}] * 2])
-    for i, column in enumerate(df.columns, 1):
-        fig.add_trace(go.Pie(labels=df.index, values=df[column], hole=0.5), row=1, col=i)
-    fig.update_layout(showlegend=False)
-    fig.update_traces(textinfo='percent+label')
-    if show:
-        fig.show()
-    return fig
-
-
 def stack_bar_plot(df: pd.DataFrame, xlabel='Term', split_x_on='-', normalize=True, show=True):
     data = df.melt(var_name=xlabel, value_name='var')
     if split_x_on:
@@ -75,3 +50,8 @@ def coerce_numeric(df: pd.DataFrame, errors='coerce') -> pd.DataFrame:
     for column in data.columns:
         data[column] = pd.to_numeric(data[column], errors=errors)
     return data
+
+
+def get_colour_map(*series: pd.Series, theme=px.colors.qualitative.Plotly):
+    union = pd.concat(series).index.unique()
+    return dict(zip(union, theme[:len(union)]))

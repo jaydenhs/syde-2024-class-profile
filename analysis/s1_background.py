@@ -2,7 +2,7 @@ import pandas as pd
 import plotly.express as px
 
 from source import load_data
-from generic import pie_plot, get_portions, multi_pie_plot_raw
+from generic import pie_plot, get_portions, get_colour_map
 
 
 uni_ethnicity = pd.Series({
@@ -46,7 +46,7 @@ uni_religion = pd.Series({
 
 def ethnicity(df: pd.DataFrame, show=True, **kwargs):
     data = df['background', 'ethnicity']
-    data = get_portions(df['background', 'ethnicity'], replace={'First Nations': 'Indigenous'}, **kwargs)
+    data = get_portions(data, replace={'First Nations': 'Indigenous'}, **kwargs)
     data = pd.concat([data, uni_ethnicity * 100], axis=1)
     data.columns = ['SYDE 2024', 'UWaterloo']
     fig = px.bar(data, barmode='group')
@@ -56,8 +56,8 @@ def ethnicity(df: pd.DataFrame, show=True, **kwargs):
     return fig
 
 # UWaterloo gender pie plot wasn't insightful
-def gender(df: pd.DataFrame, show=True, **kwargs):
-    return pie_plot(df['background', 'gender'], show=show, **kwargs)
+def gender(df: pd.DataFrame, **kwargs):
+    return pie_plot(df['background', 'gender'], **kwargs)
 
 def sexual_orientation(df: pd.DataFrame, show=True, **kwargs):
     sexuality = get_portions(df['background', 'sexual-orientation'], **kwargs)
@@ -82,17 +82,19 @@ def parent_income(df: pd.DataFrame, show=True):
         fig.show()
     return fig
 
-def religion(df: pd.DataFrame, show=True, **kwargs):
+def _get_religion_data(df: pd.DataFrame, **kwargs):
     replace = {'Agnostic': 'No religious affiliation', 'Athiesm': 'No religious affiliation'}
-    return pie_plot(df['life', 'religion'], replace=replace, show=show, **kwargs)
+    return get_portions(df['life', 'religion'], replace=replace, **kwargs)
 
-def uw_religion(show=True):
-    fig = px.pie(names=uni_religion.index, values=uni_religion.values, hole=0.5) 
-    fig.update_layout(showlegend=False)
-    fig.update_traces(textinfo='percent+label')
-    if show:
-        fig.show()
-    return fig
+def religion(df: pd.DataFrame, show=True, **kwargs):
+    data = _get_religion_data(df, **kwargs)
+    colors = get_colour_map(data, uni_religion)
+    return pie_plot(data, is_portion=True, colors=colors, show=show)
+
+def uw_religion(df, show=True, **kwargs):
+    class_data = _get_religion_data(df, **kwargs)
+    colors = get_colour_map(class_data, uni_religion)
+    return pie_plot(uni_religion, is_portion=True, colors=colors, show=show)
 
 def international(df: pd.DataFrame, **kwargs):
     return pie_plot(df['background', 'is-international'], **kwargs)
@@ -100,4 +102,5 @@ def international(df: pd.DataFrame, **kwargs):
 
 if __name__ == "__main__":
     df = load_data()
-    parent_income(df)
+    religion(df, show=True)
+    uw_religion(df, show=True)

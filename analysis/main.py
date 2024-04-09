@@ -38,7 +38,7 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
             'sexual-orientation': s1_background.sexual_orientation(df, show=False),
             'parent-income': s1_background.parent_income(df, show=False),
             'religion': s1_background.religion(df, show=False),
-            'uw-religion': s1_background.uw_religion(show=False),
+            'uw-religion': s1_background.uw_religion(df, show=False),
             # 'international': background.international(df, show=False),
         },
         '2-academics': {
@@ -77,8 +77,10 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
             'drugs': s5_lifestyle.drugs(df_edgy, show=False),
         },
         '6-future': {
-            'kids-by-gender': s6_future.kids_by_gender(df, show=False),
-            'marriage-by-gender': s6_future.marriage_by_gender(df, show=False),
+            'kids-male': s6_future.kids_male(df, show=False),
+            'kids-female': s6_future.kids_female(df, show=False),
+            'marriage-male': s6_future.marriage_male(df, show=False),
+            'marriage-female': s6_future.marriage_female(df, show=False),
             'next-year-plans': s6_future.next_year_plans(df, show=False),
             'salary-vs-location': s6_future.salary_vs_location(df, show=False),
             'full-time-locations': s6_future.full_time_locations(df, show=False),
