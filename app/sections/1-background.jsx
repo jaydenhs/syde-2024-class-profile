@@ -36,7 +36,7 @@ export default function Background() {
         srcs={["1-background/ethnicity.html"]}
         questions={["What ethnicity do you identify with?"]}
       >
-        However, we have no one who identifies Middle Eastern.
+        However, we have no one who identifies as Middle Eastern.
       </Graph>
 
       <Graph

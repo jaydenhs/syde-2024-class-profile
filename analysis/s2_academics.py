@@ -89,6 +89,7 @@ def attendance(df: pd.DataFrame, show=True):
         title='Average Attendance by Term',
         xaxis_title='Term',
         yaxis=dict(title='Average Attendance', range=[0, 1]),
+        showlegend=False,
     )
     if show:
         fig.show()
