@@ -46,14 +46,16 @@ export default function Future() {
       <Graph
         title="Most of us want to get married, several in the next year."
         className="full"
-        srcs={["6-future/marriage-by-gender.html"]}
+        srcs={["6-future/kids-female.html", "6-future/kids-male.html"]}
         questions={["Do you plan on getting married? If so, when?"]}
+        labels={["Female", "Male"]}
       ></Graph>
       <Graph
         title="Most of us want kids, but men want kids sooner."
         className="full"
-        srcs={["6-future/kids-by-gender.html"]}
+        srcs={["6-future/marriage-female.html", "6-future/marriage-male.html"]}
         questions={["Do you plan on having kids? If so, when?"]}
+        labels={["Female", "Male"]}
       ></Graph>
     </Section>
   );

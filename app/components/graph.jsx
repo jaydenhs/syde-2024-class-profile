@@ -6,6 +6,7 @@ export default function Graph({
   title,
   children,
   questions = [],
+  labels = [],
   srcs,
   className,
 }) {
@@ -25,6 +26,7 @@ export default function Graph({
                 <p>{questions[index]}</p>
               </div>
             )}
+            {labels[index] && <h4 className="text-center">{labels[index]}</h4>}
             <iframe
               className="min-h-[360px] md:min-h-[600px]"
               src={`/graphs/${src}?show_link=false`}

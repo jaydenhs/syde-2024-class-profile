@@ -26,6 +26,21 @@ export const metadata = {
   icons: {
     icon: "/favicon.ico",
   },
+  openGraph: {
+    title: "SYDE '24 Class Profile",
+    description: "Telling the stories of the class of 2024.",
+    url: "https://syde2024.vercel.app/",
+    siteName: "SYDE '24 Class Profile",
+    images: [
+      {
+        url: "https://syde2024.vercel.app/images/opengraph-image.jpg", // Must be an absolute URL
+        width: 1200,
+        height: 630,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 export default function RootLayout({ children }) {

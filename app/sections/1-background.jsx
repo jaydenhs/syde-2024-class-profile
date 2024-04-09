@@ -36,7 +36,7 @@ export default function Background() {
         srcs={["1-background/ethnicity.html"]}
         questions={["What ethnicity do you identify with?"]}
       >
-        However, we have no one who identifies as Middle Eastern.
+        However, we have no one who identifies as Middle Eastern (UW: 7%).
       </Graph>
 
       <Graph
@@ -46,8 +46,11 @@ export default function Background() {
         questions={[
           "Which of the following religions, if any, do you identify with?",
         ]}
+        labels={["SYDE 2024", "UWaterloo"]}
       >
-        Unlike the university, more of us identify with Buddhism than Islam.
+        Unlike the university, more of us identify with Buddhism than Islam. Of
+        those with no religious affiliation, we are 33.9% atheist and 23.7%
+        agnostic.
       </Graph>
       <Graph
         title="97% of us have at least one parent with a post-secondary degree."
@@ -68,7 +71,10 @@ export default function Background() {
         className="full"
         srcs={["1-background/sexual-orientation.html"]}
         questions={["What sexual identities do you identify with?"]}
-      />
+      >
+        However, we have no one who identifies as gay or lesbian (UW: 3% gay, 2%
+        lesbian).
+      </Graph>
       <SpotifyEmbed
         title="Our top songs of 2023"
         playlistId={"3tiseqtV4xRZMu82daC1bk"}
