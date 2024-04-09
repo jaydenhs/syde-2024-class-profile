@@ -21,6 +21,7 @@ const work_sans = Lora({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://syde2024.vercel.app/"),
   title: "SYDE '24 Class Profile",
   description: "A survey of the SYDE 2024 graduating class",
   icons: {
@@ -33,13 +34,16 @@ export const metadata = {
     siteName: "SYDE '24 Class Profile",
     images: [
       {
-        url: "https://syde2024.vercel.app/images/opengraph-image.jpg", // Must be an absolute URL
+        url: "/images/opengraph-image.jpg", // Must be an absolute URL
         width: 1200,
         height: 630,
       },
     ],
     locale: "en_US",
     type: "website",
+  },
+  fb: {
+    app_id: "your_facebook_app_id_here",
   },
 };
 
