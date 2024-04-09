@@ -47,7 +47,10 @@ export default function Lifestyle() {
         .
       </Graph>
       <ImageCollection srcs={[IMG_0791, IMG_7373, IMG_8640]} />
-
+      <SpotifyEmbed
+        title="Our hype-up gym songs"
+        playlistId={"4DPpCEemc5XueoQ3OT0bxw"}
+      />
       <Graph
         title="60% of the class is currently in a relationship."
         className="full"
@@ -86,10 +89,12 @@ export default function Lifestyle() {
         73% of us have now had sex, a similar proportion to past cohorts.
       </Graph>
 
-      <SpotifyEmbed
-        title="Our hype-up gym songs"
-        playlistId={"4DPpCEemc5XueoQ3OT0bxw"}
-      />
+      {/* Number of drugs tried vs. grade / co-op pay lol? */}
+      <Graph
+        title="Our drugs of choice are alcohol, weed, and shrooms."
+        className="full"
+        srcs={["5-lifestyle/drugs.html"]}
+      ></Graph>
       <SpotifyEmbed
         title="Our favourite songs to cry to"
         playlistId={"0VMMnwpjyeOM9F02h2RxYP"}

@@ -3,6 +3,8 @@ import pandas as pd
 import plotly.express as px
 
 from generic import coerce_numeric
+from source import load_data, load_edgy_data
+from generic import pie_plot
 
 
 RESTAURANT_COORDINATES = {
@@ -54,10 +56,6 @@ RESTAURANT_COORDINATES = {
     'chucks roadhouse': np.nan,
 }
 
-
-from source import load_data
-from generic import pie_plot
-
 def political_leaning(df: pd.DataFrame, show=True):
     return pie_plot(df['life', 'politics'], show=show)
 
@@ -95,7 +93,44 @@ def kw_restaurants(df: pd.DataFrame, show=True):
         fig.show()
     return fig
 
+def drugs(df: pd.DataFrame, show=True):
+    # Clean up drug names by removing leading and trailing whitespaces
+    df['drugs'] = df['drugs'].str.strip()
+    
+    # Splitting and exploding the 'drugs' column
+    df_exploded = df['drugs'].dropna().str.split(',').explode()
+
+    # Remove any empty strings after splitting
+    df_exploded = df_exploded[df_exploded != '']
+
+    # Counting the occurrences of each drug
+    drug_counts = df_exploded.value_counts()
+
+    total_respondents = len(df['drugs'])
+    drug_percentages = drug_counts / total_respondents * 100
+    
+    fig = px.bar(x=drug_percentages.index, y=drug_percentages.values)
+    fig.update_layout(xaxis_title='Drug', yaxis_title='% of Students')
+    
+    if show:
+        fig.show()
+    return fig
+
+
+# Not done yet
+# def cheated_in_person(df: pd.DataFrame, show=True):
+#     data = df['cheated-in-person'].dropna().str.split(',').explode()
+
+#     fig = px.bar(x=data.index, y=data.values)
+#     fig.update_layout(xaxis_title='I', yaxis_title='% of Students')
+    
+#     if show:
+#         fig.show()
+#     return fig
 
 if __name__ == "__main__":
-    df = load_data()
-    kw_restaurants(df)
+    # df = load_data()
+    # kw_restaurants(df)
+
+    df_edgy = load_edgy_data()
+    drugs(df_edgy)

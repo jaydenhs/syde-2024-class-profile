@@ -74,6 +74,7 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
             'lost-virginity': s5_lifestyle.lost_virginity(df_edgy, show=False),
             'sex-partners': s5_lifestyle.sex_partners(df_edgy, show=False),
             'num-relations': s5_lifestyle.num_relations(df_edgy, show=False),
+            'drugs': s5_lifestyle.drugs(df_edgy, show=False),
         },
         '6-future': {
             'kids-by-gender': s6_future.kids_by_gender(df, show=False),

@@ -42,7 +42,7 @@ export default function Background() {
       <Graph
         title="We are less religious than the university."
         className="full"
-        srcs={["1-background/religion.html"]}
+        srcs={["1-background/religion.html", "1-background/uw-religion.html"]}
         questions={[
           "Which of the following religions, if any, do you identify with?",
         ]}

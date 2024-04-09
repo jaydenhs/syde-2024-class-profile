@@ -47,11 +47,13 @@ export default function Future() {
         title="Most of us want to get married, several in the next year."
         className="full"
         srcs={["6-future/marriage-by-gender.html"]}
+        questions={["Do you plan on getting married? If so, when?"]}
       ></Graph>
       <Graph
         title="Most of us want kids, but men want kids sooner."
         className="full"
         srcs={["6-future/kids-by-gender.html"]}
+        questions={["Do you plan on having kids? If so, when?"]}
       ></Graph>
     </Section>
   );
