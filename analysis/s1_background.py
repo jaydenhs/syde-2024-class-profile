@@ -84,9 +84,15 @@ def parent_income(df: pd.DataFrame, show=True):
 
 def religion(df: pd.DataFrame, show=True, **kwargs):
     replace = {'Agnostic': 'No religious affiliation', 'Athiesm': 'No religious affiliation'}
-    data = get_portions(df['life', 'religion'], replace=replace, **kwargs)
-    data = pd.concat([data, uni_religion], axis=1)
-    return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show=show)
+    return pie_plot(df['life', 'religion'], replace=replace, show=show, **kwargs)
+
+def uw_religion(show=True):
+    fig = px.pie(names=uni_religion.index, values=uni_religion.values, hole=0.5) 
+    fig.update_layout(showlegend=False)
+    fig.update_traces(textinfo='percent+label')
+    if show:
+        fig.show()
+    return fig
 
 def international(df: pd.DataFrame, **kwargs):
     return pie_plot(df['background', 'is-international'], **kwargs)

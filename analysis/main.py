@@ -38,6 +38,7 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
             'sexual-orientation': s1_background.sexual_orientation(df, show=False),
             'parent-income': s1_background.parent_income(df, show=False),
             'religion': s1_background.religion(df, show=False),
+            'uw-religion': s1_background.uw_religion(show=False),
             # 'international': background.international(df, show=False),
         },
         '2-academics': {

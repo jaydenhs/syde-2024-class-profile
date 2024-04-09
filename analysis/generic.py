@@ -4,8 +4,8 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 
-def pie_plot(series: pd.Series, show=True, parse_multi_answer=True, **kwargs):
-    data = get_portions(series, parse_multi_answer, **kwargs)
+def pie_plot(series: pd.Series, show=True, **kwargs):
+    data = get_portions(series, **kwargs)
     fig = px.pie(names=data.index, values=data.values, hole=0.5) 
     fig.update_layout(showlegend=False)
     fig.update_traces(textinfo='percent+label')
