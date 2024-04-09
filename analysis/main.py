@@ -109,5 +109,5 @@ def generate_plots(save_dir=None, replace=False, show=False, section=None):
 
 
 if __name__ == "__main__":
-    generate_plots('public/graphs/', replace=True, section='future')
-    # generate_plots(show=True, section='future')
+    generate_plots('public/graphs/', replace=True)
+    # generate_plots(show=True)
