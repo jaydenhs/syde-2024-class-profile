@@ -12,7 +12,7 @@ def _future_gender_plot(df: pd.DataFrame, key, gender: str, show=True):
     data = pd.concat([gender_s, kids], axis=1)
     colors = get_colour_map(kids.value_counts())
     data = data[data['gender'] == gender]
-    return pie_plot(data[key], colors=colors, show=show)
+    return pie_plot(data[key], colors=colors, parse_multi_answer=False, show=show)
 
 def kids_male(df: pd.DataFrame, show=True):
     return _future_gender_plot(df, 'kids', 'Male', show=show)
@@ -72,5 +72,5 @@ def salary_vs_location(df: pd.DataFrame, show=True):
 
 if __name__ == "__main__":
     df = load_data()
-    marriage_male(df)
-    marriage_female(df)
+    kids_male(df)
+    kids_female(df)
