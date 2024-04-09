@@ -48,9 +48,9 @@ export default function Background() {
         ]}
         labels={["SYDE 2024", "UWaterloo"]}
       >
-        Unlike the university, more of us identify with Buddhism than Islam. Of
-        those with no religious affiliation, we are 33.9% atheist and 23.7%
-        agnostic.
+        Christianity is the most common religious affiliation for both groups,
+        but to a lesser extent for our class. Of those with no religious
+        affiliation, we are 33.9% atheist and 23.7% agnostic.
       </Graph>
       <Graph
         title="97% of us have at least one parent with a post-secondary degree."
