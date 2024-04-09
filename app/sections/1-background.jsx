@@ -34,6 +34,7 @@ export default function Background() {
         title="The ethnicities of our class is similar to the university."
         className="full"
         srcs={["1-background/ethnicity.html"]}
+        questions={["What ethnicity do you identify with?"]}
       >
         However, we have no one who identifies Middle Eastern.
       </Graph>
@@ -42,12 +43,18 @@ export default function Background() {
         title="We are less religious than the university."
         className="full"
         srcs={["1-background/religion.html"]}
+        questions={[
+          "Which of the following religions, if any, do you identify with?",
+        ]}
       >
         Unlike the university, more of us identify with Buddhism than Islam.
       </Graph>
       <Graph
         title="97% of us have at least one parent with a post-secondary degree."
         srcs={["1-background/parent-education.html"]}
+        questions={[
+          "What is the highest level of education attained by (either of) your parent(s)?",
+        ]}
       />
       <ImageCollection srcs={[IMG_0087, IMG_1081, IMG_1122]} />
       {/* Comment for now, x-axis is unordered */}
@@ -60,6 +67,7 @@ export default function Background() {
         title="The sexual orientations of our class is similar to the university."
         className="full"
         srcs={["1-background/sexual-orientation.html"]}
+        questions={["What sexual identities do you identify with?"]}
       />
       <SpotifyEmbed
         title="Our top songs of 2023"

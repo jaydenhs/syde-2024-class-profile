@@ -18,6 +18,7 @@ export default function Future() {
       <Graph
         title="Most of us are planning to work full-time after graduation."
         srcs={["6-future/next-year-plans.html"]}
+        questions={["What do you plan on doing in the year after graduation?"]}
       >
         Of those planning on pursuing graduate studies, all are focused on
         engineering or computer science.
@@ -28,10 +29,14 @@ export default function Future() {
       <Graph
         title="Only 28% of us are planning on working in the US."
         srcs={["6-future/full-time-locations.html"]}
+        questions={["For those working full-time, where will you be located?"]}
       ></Graph>
       <Graph
         title="The median salary of those working in the US is 2.47 times higher than those working in Canada."
         srcs={["6-future/salary-vs-location.html"]}
+        questions={[
+          "For those working full-time, what is your estimated annual compensation?",
+        ]}
       >
         The median salary for jobs based in Canada is $110,000, while for those
         based in the US, it's $272,000.

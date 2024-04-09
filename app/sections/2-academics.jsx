@@ -34,6 +34,9 @@ export default function Academics() {
       <Graph
         title="We found Human Factors in Design (SYDE162) to be the best balance of easy and useful."
         srcs={["2-academics/ease-vs-use.html"]}
+        questions={[
+          "How easy/useful did you find each core course for future courses (elective and mandatory), co-ops, OR general growth?",
+        ]}
       >
         We found the programming courses, SYDE121 and SYDE223, more useful but
         more difficult.{" "}
@@ -46,10 +49,10 @@ export default function Academics() {
       </Graph>
       <ImageCollection srcs={[IMG_6666, IMG_2022, IMG_3699]} />
       <Graph
-        title="Class attendance has decreased by 23% since first term, from 74% to 51%."
+        title="Lecture attendance has decreased by 23% since first term, from 74% to 51%."
         srcs={["2-academics/attendance.html"]}
       >
-        Our lowest class attendance was 44% during 2A, our second fully-online
+        Our lowest lecture attendance was 44% during 2A, our second fully-online
         term. Attendance did not have a significant effect on grades.
       </Graph>
       <ImageCollection srcs={[IMG_8284, IMG_9351, IMG_7777]} />

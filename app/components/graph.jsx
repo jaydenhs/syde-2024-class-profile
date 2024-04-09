@@ -10,17 +10,17 @@ export default function Graph({
   className,
 }) {
   return (
-    <div className={`space-y-2 ${className}`}>
-      <div className="space-y-2">
+    <div className={`space-y-4 ${className}`}>
+      <div className="space-y-1.5">
         <h3 className="break-words">{title ? title : srcs}</h3>
-        {children && <div>{children}</div>}
+        {children && <p>{children}</p>}
       </div>
 
       <div className="flex flex-col space-y-6 md:flex-row md:space-x-8 md:space-y-0">
         {srcs.map((src, index) => (
-          <div key={index} className="flex flex-col space-y-2 w-full">
+          <div key={index} className="flex flex-col space-y-4 w-full">
             {questions[index] && (
-              <div className="flex items-center space-x-2 text-slate-500">
+              <div className="flex items-start space-x-2 text-slate-500">
                 <Image className="opacity-50" src={HelpIcon} />
                 <p>{questions[index]}</p>
               </div>

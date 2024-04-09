@@ -18,6 +18,7 @@ export default function Syde() {
       <Graph
         title="59% of us have five or more close friends in SYDE."
         srcs={["4-syde/close-friends.html"]}
+        questions={["How many close friends do you have in SYDE?"]}
       ></Graph>
       <ImageCollection srcs={[IMG_8072, IMG_9417, IMG_4234]} />
       <Graph
@@ -27,6 +28,7 @@ export default function Syde() {
           "4-syde/restart-program.html",
           "4-syde/restart-program-historical.html",
         ]}
+        questions={["What program would you do if you could start again?"]}
       >
         This marks the second consecutive year of 67%, a decline from the higher
         percentages seen between 2018 and 2021.

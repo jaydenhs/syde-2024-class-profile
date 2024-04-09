@@ -20,7 +20,7 @@ def restart_program_historical(df: pd.DataFrame, show=True):
     data = pd.DataFrame({'Cohort': cohorts, 'Percentage': percentages})
     fig = px.line(data, x='Cohort', y='Percentage', title='SYDE Preference Over Years', markers=True)
     fig.update_xaxes(title_text='Cohort')
-    fig.update_yaxes(title_text='% of Class Choosing SYDE Again')
+    fig.update_yaxes(title_text='% Who Would Choose SYDE Again')
     if show:
         fig.show()
     

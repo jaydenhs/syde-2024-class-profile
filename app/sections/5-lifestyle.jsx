@@ -21,6 +21,7 @@ export default function Lifestyle() {
       <Graph
         title="We have an even split of extroverts and introverts."
         srcs={["5-lifestyle/myers-briggs.html"]}
+        questions={["What is your MBTI?"]}
       >
         Our most common Myers-Briggs Personality Types were{" "}
         <Link
@@ -64,6 +65,9 @@ export default function Lifestyle() {
       <Graph
         title="Most of us had 1 or 2 committed relationships in university."
         srcs={["5-lifestyle/num-relations.html"]}
+        questions={[
+          "How many committed relationships have you been in during university?",
+        ]}
       ></Graph>
       <ImageCollection srcs={[IMG_7787, IMG_9404, IMG_1768]} />
 

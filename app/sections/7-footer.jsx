@@ -3,6 +3,7 @@ import React from "react";
 import Section from "@components/section";
 import Graph from "@components/graph";
 import ImageCollection from "@components/image-collection";
+import ContactUs from "@components/contact-us";
 
 import ImageBlob from "@components/image-blob";
 import classPic1 from "@images/0-hero/4A.jpg";
@@ -31,6 +32,7 @@ export default function Footer() {
           className={"scale-150 mt-16 mb-16 md:my-0 md:scale-100 object-cover"}
         />
       </div>
+      <ContactUs className="full" />
     </Section>
   );
 }
