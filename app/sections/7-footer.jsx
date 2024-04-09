@@ -11,8 +11,8 @@ import classPic1 from "@images/0-hero/4A.jpg";
 export default function Footer() {
   return (
     <Section bgColor="bg-zinc-900" className="section-layout text-white">
-      <h2>THANK YOU</h2>
-      <div className="space-y-4">
+      <h2 className="px-4 md:px-0">THANK YOU</h2>
+      <div className="space-y-4 px-4 md:px-0">
         <h3>Authors' Note</h3>
         <p>
           This class profile was made to tell a story - a story about 94
@@ -32,7 +32,7 @@ export default function Footer() {
           className={"scale-150 mt-16 mb-16 md:my-0 md:scale-100 object-cover"}
         />
       </div>
-      <ContactUs className="full" />
+      <ContactUs className="full px-4 md:px-0" />
     </Section>
   );
 }
