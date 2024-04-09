@@ -9,10 +9,10 @@ uni_ethnicity = pd.Series({
     'White': 0.38,
     'East Asian': 0.29,
     'South Asian': 0.19,
-    'Middle Eastern': 0.07,
+    # 'Middle Eastern': 0.07,
     'Black': 0.05,
     'Indigenous': 0.01,
-    'Other': 0.01,
+    # 'Other': 0.01,
 })
 
 uni_gender = pd.Series({
@@ -27,6 +27,11 @@ uni_sexuality = pd.Series({
     'Straight/heterosexual': 0.73,
     'Bisexual': 0.11,
     'Asexual': 0.06,
+    'Queer': 0.04,
+    'Questioning': 0.04,
+    # 'Gay': 0.03,
+    # 'Lesbian': 0.02,
+    # 'Other': 0.06,
     'Prefer not to say': 0.05,
 })
 
@@ -40,10 +45,15 @@ uni_religion = pd.Series({
 
 
 def ethnicity(df: pd.DataFrame, show=True, **kwargs):
-    ethnicity = get_portions(df['background', 'ethnicity'], **kwargs)
-    ethnicity.replace('First Nations', 'Indigenous', inplace=True)
-    data = pd.concat([ethnicity, uni_ethnicity], axis=1)
-    return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show)
+    data = df['background', 'ethnicity']
+    data = get_portions(df['background', 'ethnicity'], replace={'First Nations': 'Indigenous'}, **kwargs)
+    data = pd.concat([data, uni_ethnicity * 100], axis=1)
+    data.columns = ['SYDE 2024', 'UWaterloo']
+    fig = px.bar(data, barmode='group')
+    fig.update_layout(yaxis_title='% of Students', xaxis_title='Ethnicity')
+    if show:
+        fig.show()
+    return fig
 
 # UWaterloo gender pie plot wasn't insightful
 def gender(df: pd.DataFrame, show=True, **kwargs):
@@ -51,8 +61,13 @@ def gender(df: pd.DataFrame, show=True, **kwargs):
 
 def sexual_orientation(df: pd.DataFrame, show=True, **kwargs):
     sexuality = get_portions(df['background', 'sexual-orientation'], **kwargs)
-    data = pd.concat([sexuality, uni_sexuality], axis=1)
-    return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show)
+    data = pd.concat([sexuality, uni_sexuality * 100], axis=1)
+    data.columns = ['SYDE 2024', 'UWaterloo']
+    fig = px.bar(data, barmode='group')
+    fig.update_layout(yaxis_title='% of Students', xaxis_title='Sexual Orientation')
+    if show:
+        fig.show()
+    return fig
 
 
 def parent_education(df: pd.DataFrame, **kwargs):
@@ -68,11 +83,9 @@ def parent_income(df: pd.DataFrame, show=True):
         fig.show()
     return fig
 
-def religion(df: pd.DataFrame, show=True):
-    data = df['life', 'religion'].str.split(',').explode().str.strip()
-    data.replace('Agnostic', 'No religious affiliation', inplace=True)
-    data.replace('Athiesm', 'No religious affiliation', inplace=True)
-    data = data.value_counts(normalize=True) * 100
+def religion(df: pd.DataFrame, show=True, **kwargs):
+    replace = {'Agnostic': 'No religious affiliation', 'Athiesm': 'No religious affiliation'}
+    data = get_portions(df['life', 'religion'], replace=replace, **kwargs)
     data = pd.concat([data, uni_religion], axis=1)
     return multi_pie_plot_raw(data, ['SYDE 2024', 'UWaterloo'], show=show)
 
@@ -82,4 +95,4 @@ def international(df: pd.DataFrame, **kwargs):
 
 if __name__ == "__main__":
     df = load_data()
-    sexual_orientation(df)
+    religion(df)
