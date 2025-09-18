@@ -1,5 +1,34 @@
 export const runtime = "nodejs";
 
+async function getPreviewUrl(track) {
+  try {
+    // Call our separate preview API endpoint
+    const response = await fetch(
+      `${
+        process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"
+      }/api/preview`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          trackName: track.name,
+          artistName: track.artists[0].name,
+        }),
+      }
+    );
+
+    if (response.ok) {
+      const data = await response.json();
+      return data.previewUrl;
+    }
+  } catch (error) {
+    console.error("Error fetching preview URL:", error);
+  }
+  return null;
+}
+
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -65,19 +94,39 @@ export async function GET(request) {
       (item) => !!item?.track
     );
 
+    // Fetch preview URLs for each track
+    const itemsWithPreviews = await Promise.all(
+      items.map(async (item) => {
+        const previewUrl = await getPreviewUrl(item.track);
+        return {
+          ...item,
+          track: {
+            ...item.track,
+            preview_url: previewUrl,
+          },
+        };
+      })
+    );
+
     return new Response(
       JSON.stringify({
         name: playlistJson.name,
         uri: playlistJson.uri,
-        items,
+        items: itemsWithPreviews,
       }),
       { status: 200, headers: { "Content-Type": "application/json" } }
     );
   } catch (error) {
-    console.error("Spotify API error", error?.message);
-    return new Response(JSON.stringify({ error: "Failed to fetch playlist" }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" },
-    });
+    console.error("Spotify API error", error?.message, error?.stack);
+    return new Response(
+      JSON.stringify({
+        error: "Failed to fetch playlist",
+        details: error?.message,
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 }

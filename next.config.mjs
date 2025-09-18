@@ -9,6 +9,15 @@ const nextConfig = {
       },
     ],
   },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      config.externals.push("spotify-preview-finder");
+    }
+    return config;
+  },
+  experimental: {
+    serverComponentsExternalPackages: ["spotify-preview-finder"],
+  },
 };
 
 export default nextConfig;

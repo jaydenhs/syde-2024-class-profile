@@ -44,14 +44,16 @@ const TrackCard = ({ track }) => {
 
   return (
     <div
-      className="group transition-all space-y-2 hover:scale-110"
+      className={`group transition-all space-y-2 ${
+        track.preview_url && "hover:scale-110"
+      }`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       <div
         className="relative"
         onClick={handlePlayButtonClick}
-        style={{ cursor: "pointer" }}
+        style={{ cursor: track.preview_url ? "pointer" : "default" }}
       >
         {albumArt && (
           <Image
@@ -63,15 +65,17 @@ const TrackCard = ({ track }) => {
             alt={`Album Art for ${albumName}`}
           />
         )}
-        <button
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border border-gray-300 rounded-full p-1"
-          onClick={(e) => {
-            e.stopPropagation();
-            handlePlayButtonClick();
-          }}
-        >
-          {isPlaying ? <Image src={PauseIcon} /> : <Image src={PlayIcon} />}
-        </button>
+        {track.preview_url && (
+          <button
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white border border-gray-300 rounded-full p-1"
+            onClick={(e) => {
+              e.stopPropagation();
+              handlePlayButtonClick();
+            }}
+          >
+            {isPlaying ? <Image src={PauseIcon} /> : <Image src={PlayIcon} />}
+          </button>
+        )}
       </div>
       <div className="text-sm space-y-0">
         <p className="font-medium truncate">{track.name}</p>
@@ -79,10 +83,12 @@ const TrackCard = ({ track }) => {
           {track.artists.map((artist) => artist.name).join(", ")}
         </p>
       </div>
-      <audio key={track.id} ref={audioRef}>
-        <source src={track.preview_url} type="audio/mp3" />
-        Your browser does not support the audio element.
-      </audio>
+      {track.preview_url && (
+        <audio key={track.id} ref={audioRef}>
+          <source src={track.preview_url} type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+      )}
     </div>
   );
 };
