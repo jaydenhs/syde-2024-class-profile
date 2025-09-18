@@ -42,45 +42,11 @@ const SpotifyEmbed = ({ title, children, playlistId }) => {
   const shownTracks = isBreakpoint ? 4 : 3;
 
   useEffect(() => {
-    const clientId = "3b688e6717e64da4a591c11875fdcbc0";
-    const clientSecret = "8b7d9765545946df9a0e232234e3f4bc";
-
     const fetchPlaylistData = async () => {
       try {
-        // Step 1: Get Access Token
-        const tokenResponse = await axios.post(
-          "https://accounts.spotify.com/api/token",
-          null,
-          {
-            params: {
-              grant_type: "client_credentials",
-            },
-            headers: {
-              "Content-Type": "application/x-www-form-urlencoded",
-              Authorization: `Basic ${btoa(`${clientId}:${clientSecret}`)}`,
-            },
-          }
-        );
-
-        const accessToken = tokenResponse.data.access_token;
-
-        // Step 2: Fetch Playlist Data
-        const playlistResponse = await axios.get(
-          `https://api.spotify.com/v1/playlists/${playlistId}`,
-          {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          }
-        );
-
-        console.log(playlistResponse.data.name, playlistResponse.data.uri);
-
-        const shuffledTracks = shuffleArray(
-          playlistResponse.data.tracks.items.filter(
-            (item) => item.track.preview_url !== null
-          )
-        );
+        const res = await axios.get(`/api/spotify`, { params: { playlistId } });
+        console.log(res.data.name, res.data.uri);
+        const shuffledTracks = shuffleArray(res.data.items);
         setPlaylistData(shuffledTracks);
       } catch (error) {
         console.error("Error:", error);
